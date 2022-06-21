@@ -1,0 +1,499 @@
+﻿Sector,Ticker,Company,Market Capitalization,PE Ratio
+Commercial Services,SPGI,S&P Global Inc.," $     111,125,098,275.50",40.7
+Commercial Services,MCO,Moody’s Corporation," $       71,309,376,207.33",35
+Commercial Services,CPRT,"Copart, Inc."," $       34,854,843,266.37",36.6
+Commercial Services,EFX,"Equifax, Inc."," $       34,648,432,194.28",51.9
+Commercial Services,FLT,"FleetCor Technologies, Inc."," $       18,765,806,553.47",23.1
+Commercial Services,CRL,"Charles River Laboratories International, Inc."," $       18,273,662,894.10",48.7
+Commercial Services,OMC,Omnicom Group Inc.," $       15,705,948,134.78",11.4
+Commercial Services,IPG,"Interpublic Group of Companies, Inc. (The)"," $       14,819,801,161.35",21.1
+Commercial Services,RHI,Robert Half International Inc.," $       12,185,090,044.53",23.8
+Commercial Services,NLSN,Nielsen N.V.," $         7,574,271,691.93",29.6
+Communications,VZ,Verizon Communications Inc.," $     217,110,199,611.98",9.8
+Communications,T,AT&T Inc.," $     181,595,632,815.91",202.5
+Communications,TMUS,"T-Mobile US, Inc."," $     142,929,192,342.43",43.4
+Communications,LUMN,"Lumen Technologies, Inc."," $       13,003,456,094.10",
+Consumer Durables,TSLA,"Tesla, Inc."," $ 1,204,896,966,220.99",342.2
+Consumer Durables,GM,General Motors Company," $       88,810,291,856.10",7.8
+Consumer Durables,F,Ford Motor Company," $       86,998,178,943.37",28.7
+Consumer Durables,ATVI,"Activision Blizzard, Inc"," $       52,512,665,064.61",19.7
+Consumer Durables,EA,Electronic Arts Inc.," $       38,164,960,303.93",48.6
+Consumer Durables,DHI,"D.R. Horton, Inc."," $       37,491,652,739.18",9.5
+Consumer Durables,SWK,"Stanley Black & Decker, Inc."," $       30,312,765,508.91",16.9
+Consumer Durables,TTWO,"Take-Two Interactive Software, Inc."," $       20,593,695,531.30",36.7
+Consumer Durables,NVR,"NVR, Inc."," $       20,050,210,153.24",19.1
+Consumer Durables,LKQ,LKQ Corporation," $       17,128,405,481.11",17.4
+Consumer Durables,PHM,"PulteGroup, Inc."," $       14,201,184,132.96",8.8
+Consumer Durables,WHR,Whirlpool Corporation," $       14,134,916,744.12",7.5
+Consumer Durables,HAS,"Hasbro, Inc."," $       14,094,034,544.13",31.1
+Consumer Durables,MHK,"Mohawk Industries, Inc."," $       12,460,724,730.35",11.7
+Consumer Durables,SNA,Snap-On Incorporated," $       11,420,081,543.96",14.7
+Consumer Non-Durables,PG,Procter & Gamble Company (The)," $     394,209,493,523.92",29.9
+Consumer Non-Durables,NKE,"Nike, Inc."," $     260,640,746,546.67",43.7
+Consumer Non-Durables,KO,Coca-Cola Company (The)," $     256,175,996,038.99",29.1
+Consumer Non-Durables,PEP,"PepsiCo, Inc."," $     239,171,317,244.49",29.6
+Consumer Non-Durables,PM,Philip Morris International Inc," $     149,035,109,662.80",16.5
+Consumer Non-Durables,EL,"Estee Lauder Companies, Inc. (The)"," $     133,284,920,395.43",44.9
+Consumer Non-Durables,MDLZ,"Mondelez International, Inc."," $       92,026,310,532.35",21.2
+Consumer Non-Durables,MO,"Altria Group, Inc."," $       88,120,355,995.41",32
+Consumer Non-Durables,CL,Colgate-Palmolive Company," $       71,296,567,952.74",27.3
+Consumer Non-Durables,MNST,Monster Beverage Corporation," $       51,083,089,116.08",33.6
+Consumer Non-Durables,KMB,Kimberly-Clark Corporation," $       47,958,559,724.51",24.3
+Consumer Non-Durables,STZ,"Constellation Brands, Inc."," $       47,552,325,752.99",84.8
+Consumer Non-Durables,KHC,The Kraft Heinz Company," $       44,236,897,124.80",19.2
+Consumer Non-Durables,GIS,"General Mills, Inc."," $       40,571,678,637.15",18.6
+Consumer Non-Durables,HSY,The Hershey Company," $       39,808,900,352.48",28.1
+Consumer Non-Durables,IFF,"International Flavors & Fragrances, Inc."," $       37,958,046,665.26",123
+Consumer Non-Durables,BF.B,Brown Forman Inc," $       33,440,414,372.95",45.7
+Consumer Non-Durables,TSN,"Tyson Foods, Inc."," $       31,413,099,631.95",10.3
+Consumer Non-Durables,VFC,V.F. Corporation," $       28,951,982,901.13",23.5
+Consumer Non-Durables,HRL,Hormel Foods Corporation," $       26,656,462,210.69",29.4
+Consumer Non-Durables,MKC,"McCormick & Company, Incorporated"," $       25,577,563,115.03",34.4
+Consumer Non-Durables,CHD,"Church & Dwight Company, Inc."," $       24,832,329,818.64",31.3
+Consumer Non-Durables,K,Kellogg Company," $       22,063,822,254.19",17.6
+Consumer Non-Durables,CLX,Clorox Company (The)," $       21,492,383,110.84",50.5
+Consumer Non-Durables,CAG,"ConAgra Brands, Inc."," $       16,338,234,937.08",13.8
+Consumer Non-Durables,SJM,J.M. Smucker Company (The) New," $       14,824,089,324.54",19.4
+Consumer Non-Durables,CPB,Campbell Soup Company," $       13,198,014,790.89",13.9
+Consumer Non-Durables,TAP,Molson Coors Beverage Company," $       10,302,980,466.51",
+Consumer Non-Durables,LW,"Lamb Weston Holdings, Inc."," $         9,336,692,615.12",36.1
+Consumer Non-Durables,UAA,"Under Armour, Inc."," $         9,313,776,740.49",22.5
+Consumer Non-Durables,UA,"Under Armour, Inc."," $         9,307,303,735.46",19.2
+Consumer Non-Durables,PVH,PVH Corp.," $         7,563,182,425.21",15.3
+Consumer Services,DIS,Walt Disney Company (The)," $     284,935,754,355.56",142
+Consumer Services,CMCSA,Comcast Corporation," $     231,827,155,904.31",16.2
+Consumer Services,MCD,McDonald’s Corporation," $     200,695,181,021.82",27.7
+Consumer Services,SBUX,Starbucks Corporation," $     136,888,971,731.61",33
+Consumer Services,CHTR,"Charter Communications, Inc."," $     116,105,310,853.44",30.4
+Consumer Services,BKNG,Booking Holdings Inc. Common Stock," $     101,074,480,437.11",261.9
+Consumer Services,MAR,Marriott International," $       53,382,719,592.32",116.9
+Consumer Services,CMG,"Chipotle Mexican Grill, Inc."," $       47,567,687,697.08",70.2
+Consumer Services,CTAS,Cintas Corporation," $       43,963,052,139.69",41.4
+Consumer Services,HLT,Hilton Worldwide Holdings Inc.," $       43,056,926,594.85",1238
+Consumer Services,YUM,"Yum! Brands, Inc."," $       40,021,460,565.91",26.8
+Consumer Services,LVS,Las Vegas Sands Corp.," $       29,681,001,154.79",
+Consumer Services,EXPE,"Expedia Group, Inc."," $       28,028,066,448.21",
+Consumer Services,LYV,"Live Nation Entertainment, Inc."," $       26,826,308,998.35",
+Consumer Services,MGM,MGM Resorts International," $       21,328,293,979.01",34.5
+Consumer Services,VIAC,ViacomCBS Inc.," $       21,011,342,171.29",5.9
+Consumer Services,FOX,Fox Corporation," $       20,790,031,973.13",11.5
+Consumer Services,FOXA,Fox Corporation," $       20,770,577,311.57",12.4
+Consumer Services,RCL,D/B/A Royal Caribbean Cruises Ltd.," $       20,594,663,231.79",
+Consumer Services,DPZ,Domino’s Pizza Inc," $       20,131,657,583.82",42.9
+Consumer Services,CZR,"Caesars Entertainment, Inc."," $       19,981,459,992.30",
+Consumer Services,DRI,"Darden Restaurants, Inc."," $       19,309,412,766.17",21.5
+Consumer Services,DISH,DISH Network Corporation," $       17,603,493,712.08",7.8
+Consumer Services,ROL,"Rollins, Inc."," $       16,532,835,055.95",48.4
+Consumer Services,NWSA,News Corporation," $       13,533,762,277.95",26.9
+Consumer Services,NWS,News Corporation," $       13,484,305,566.41",27.2
+Consumer Services,DISCA,"Discovery, Inc. – Series A"," $       12,629,738,909.73",12.6
+Consumer Services,DISCK,"Discovery, Inc. – Series C"," $       12,603,428,087.69",12.3
+Consumer Services,WYNN,"Wynn Resorts, Limited"," $       10,151,293,811.78",
+Consumer Services,NCLH,Norwegian Cruise Line Holdings Ltd.," $         9,246,662,389.05",
+Consumer Services,PENN,"Penn National Gaming, Inc."," $         8,584,209,180.84",23.2
+Distribution Services,SYY,Sysco Corporation," $       40,474,222,147.80",59.1
+Distribution Services,MCK,McKesson Corporation," $       37,880,448,654.78",
+Distribution Services,FAST,Fastenal Company," $       35,648,625,623.06",41.5
+Distribution Services,ABC,AmerisourceBergen Corporation," $       27,602,646,317.57",18
+Distribution Services,GWW,"W.W. Grainger, Inc."," $       26,285,527,093.09",29.4
+Distribution Services,POOL,Pool Corporation," $       22,058,407,994.87",38.3
+Distribution Services,GPC,Genuine Parts Company," $       19,644,231,953.89",24.9
+Distribution Services,CAH,"Cardinal Health, Inc."," $       14,655,794,065.86",13.3
+Distribution Services,HSIC,"Henry Schein, Inc."," $       10,737,559,239.42",17.9
+Electronic Technology,AAPL,Apple Inc.," $ 2,986,128,347,290.24",31.7
+Electronic Technology,NVDA,NVIDIA Corporation," $     753,024,962,494.95",90.7
+Electronic Technology,AVGO,Broadcom Inc.," $     273,867,545,687.41",44.4
+Electronic Technology,INTC,Intel Corporation," $     216,405,070,000.00",10
+Electronic Technology,QCOM,QUALCOMM Incorporated," $     208,555,194,431.11",23.2
+Electronic Technology,AMD,"Advanced Micro Devices, Inc."," $     181,431,389,863.09",44.5
+Electronic Technology,TXN,Texas Instruments Incorporated," $     176,024,068,559.83",24.2
+Electronic Technology,RTX,Raytheon Technologies Corporation," $     130,174,753,742.42",39.2
+Electronic Technology,BA,Boeing Company (The)," $     122,159,176,740.63",
+Electronic Technology,MU,"Micron Technology, Inc."," $     107,256,260,088.20",14.4
+Electronic Technology,LRCX,Lam Research Corporation," $     102,143,832,762.37",24.3
+Electronic Technology,LMT,Lockheed Martin Corporation," $       97,727,683,172.13",16.4
+Electronic Technology,ADI,"Analog Devices, Inc."," $       93,062,333,725.72",47.7
+Electronic Technology,KLAC,KLA Corporation," $       65,969,290,798.36",24.3
+Electronic Technology,NXPI,NXP Semiconductors N.V.," $       61,489,087,598.82",40.2
+Electronic Technology,NOC,Northrop Grumman Corporation," $       61,121,018,829.49",13.6
+Electronic Technology,GD,General Dynamics Corporation," $       57,927,570,591.60",17.9
+Electronic Technology,XLNX,"Xilinx, Inc."," $       54,848,499,524.68",66.1
+Electronic Technology,FTNT,"Fortinet, Inc."," $       54,465,052,995.98",108.1
+Electronic Technology,TEL,TE Connectivity Ltd. New Switzerland Registered Shares," $       52,536,448,880.99",23.7
+Electronic Technology,APH,Amphenol Corporation," $       51,729,406,929.26",36.8
+Electronic Technology,MCHP,Microchip Technology Incorporated," $       48,828,617,282.89",75.9
+Electronic Technology,MSI,"Motorola Solutions, Inc."," $       45,168,258,169.09",37.5
+Electronic Technology,ANET,"Arista Networks, Inc."," $       43,708,019,243.22",58.4
+Electronic Technology,LHX,"L3Harris Technologies, Inc."," $       41,515,422,459.90",28.2
+Electronic Technology,HPQ,HP Inc.," $       41,165,108,748.54",6.9
+Electronic Technology,KEYS,Keysight Technologies Inc.," $       37,095,388,104.94",43.1
+Electronic Technology,TDG,Transdigm Group Inc.," $       35,447,144,260.77",61.4
+Electronic Technology,GLW,Corning Incorporated," $       31,738,259,763.53",38.9
+Electronic Technology,ZBRA,Zebra Technologies Corporation," $       31,204,488,979.55",38
+Electronic Technology,TER,"Teradyne, Inc."," $       27,076,652,169.65",30.8
+Electronic Technology,SWKS,"Skyworks Solutions, Inc."," $       26,425,575,150.02",17.3
+Electronic Technology,FTV,Fortive Corporation," $       26,380,559,295.40",17
+Electronic Technology,GRMN,Garmin Ltd.," $       25,684,609,699.53",23.2
+Electronic Technology,STX,Seagate Technology Holdings PLC," $       25,193,483,781.49",16.5
+Electronic Technology,ENPH,"Enphase Energy, Inc."," $       24,884,603,639.82",159.1
+Electronic Technology,MPWR,"Monolithic Power Systems, Inc."," $       22,809,119,688.82",111
+Electronic Technology,TRMB,Trimble Inc.," $       21,757,408,056.33",39.7
+Electronic Technology,HPE,Hewlett Packard Enterprise Company," $       20,876,119,290.05",6.1
+Electronic Technology,TDY,Teledyne Technologies Incorporated," $       20,629,519,092.33",43.7
+Electronic Technology,WDC,Western Digital Corporation," $       20,545,297,131.73",13.8
+Electronic Technology,NTAP,"NetApp, Inc."," $       20,536,239,966.13",22.3
+Electronic Technology,QRVO,"Qorvo, Inc."," $       17,572,889,244.20",16.2
+Electronic Technology,TXT,Textron Inc.," $       16,827,260,376.15",22.7
+Electronic Technology,FFIV,"F5, Inc."," $       14,863,433,707.37",45.6
+Electronic Technology,HWM,Howmet Aerospace Inc.," $       13,811,956,501.76",49.2
+Electronic Technology,IPGP,IPG Photonics Corporation," $         9,265,612,395.81",35.4
+Electronic Technology,HII,"Huntington Ingalls Industries, Inc."," $         7,452,948,103.27",11.2
+Energy Minerals,XOM,Exxon Mobil Corporation," $     269,000,834,440.85",
+Energy Minerals,CVX,Chevron Corporation," $     229,895,819,005.12",22.8
+Energy Minerals,COP,ConocoPhillips," $       97,298,713,180.93",21.5
+Energy Minerals,EOG,"EOG Resources, Inc."," $       53,336,807,947.68",17.2
+Energy Minerals,PXD,Pioneer Natural Resources Company," $       45,626,147,952.36",32.9
+Energy Minerals,MPC,Marathon Petroleum Corporation," $       40,419,489,935.51",36.3
+Energy Minerals,PSX,Phillips 66," $       33,187,017,200.78",
+Energy Minerals,VLO,Valero Energy Corporation," $       31,537,580,933.35",
+Energy Minerals,DVN,Devon Energy Corporation," $       30,850,889,465.16",26.4
+Energy Minerals,OXY,Occidental Petroleum Corporation," $       29,009,450,192.14",
+Energy Minerals,HES,Hess Corporation," $       23,783,928,119.91",116.7
+Energy Minerals,FANG,"Diamondback Energy, Inc. – Commmon Stock"," $       20,262,560,858.48",55.9
+Energy Minerals,CTRA,Coterra Energy Inc.," $       15,921,714,350.94",21.7
+Energy Minerals,MRO,Marathon Oil Corporation," $       13,133,916,978.00",
+Energy Minerals,APA,APA Corporation," $       10,193,475,545.26",17
+Finance,BRK.B,Berkshire Hathaway Inc. New," $     673,127,852,286.11",8
+Finance,JPM,JP Morgan Chase & Co.," $     477,866,548,937.10",10
+Finance,V,Visa Inc.," $     466,383,592,163.84",39.5
+Finance,BAC,Bank of America Corporation," $     377,941,012,657.41",13.3
+Finance,MA,Mastercard Incorporated," $     364,479,675,124.09",44.2
+Finance,WFC,Wells Fargo & Company," $     202,272,298,831.52",11.3
+Finance,MS,Morgan Stanley," $     179,782,143,715.12",12.5
+Finance,SCHW,Charles Schwab Corporation (The)," $     161,915,096,376.25",32
+Finance,BLK,"BlackRock, Inc."," $     138,507,445,860.18",24.3
+Finance,AMT,American Tower Corporation (REIT)," $     133,208,506,165.00",53.2
+Finance,GS,"Goldman Sachs Group, Inc. (The)"," $     132,353,700,112.08",6.3
+Finance,AXP,American Express Company," $     130,288,023,378.90",17.1
+Finance,PLD,"Prologis, Inc."," $     128,085,935,864.00",65.5
+Finance,C,"Citigroup, Inc."," $     125,207,259,805.92",5.6
+Finance,CCI,Crown Castle International Corp. (REIT)," $       90,218,108,168.00",68.9
+Finance,PNC,"PNC Financial Services Group, Inc. (The)"," $       88,002,270,938.75",15.3
+Finance,USB,U.S. Bancorp," $       84,919,816,209.00",11.3
+Finance,MMC,"Marsh & McLennan Companies, Inc."," $       84,433,658,915.75",32.9
+Finance,CB,Chubb Limited," $       82,461,108,064.59",9.8
+Finance,CME,CME Group Inc.," $       81,030,165,556.27",33.7
+Finance,EQIX,"Equinix, Inc."," $       76,160,456,406.00",178.1
+Finance,ICE,Intercontinental Exchange Inc.," $       75,468,007,924.18",25.3
+Finance,PSA,Public Storage," $       65,680,806,742.00",44.8
+Finance,AON,Aon plc," $       64,610,276,181.00",76.3
+Finance,COF,Capital One Financial Corporation," $       63,136,776,316.60",5.4
+Finance,PGR,Progressive Corporation (The)," $       59,547,599,640.29",14.9
+Finance,MET,"MetLife, Inc."," $       53,186,561,967.51",10.3
+Finance,SPG,"Simon Property Group, Inc."," $       52,502,204,044.00",28.6
+Finance,DLR,"Digital Realty Trust, Inc."," $       50,193,489,421.00",74.7
+Finance,BK,The Bank of New York Mellon Corporation," $       48,318,790,861.51",14.8
+Finance,AIG,"American International Group, Inc. New"," $       47,650,780,201.66",8.9
+Finance,TROW,"T. Rowe Price Group, Inc."," $       43,732,116,141.32",14.8
+Finance,SBAC,SBA Communications Corporation," $       42,318,122,232.00",147.8
+Finance,PRU,"Prudential Financial, Inc."," $       41,549,759,180.47",5.9
+Finance,O,Realty Income Corporation," $       40,502,630,312.00",56.4
+Finance,SIVB,SVB Financial Group," $       40,386,900,164.09",20.7
+Finance,AFL,AFLAC Incorporated," $       38,547,251,264.72",9.5
+Finance,TRV,"The Travelers Companies, Inc."," $       38,315,850,466.90",10.9
+Finance,WELL,Welltower Inc.," $       37,333,495,503.00",1374.5
+Finance,CBRE,CBRE Group Inc," $       36,368,140,052.14",25.3
+Finance,AVB,"AvalonBay Communities, Inc."," $       35,297,158,729.00",34.9
+Finance,FRC,FIRST REPUBLIC BANK," $       34,881,801,059.79",28.5
+Finance,DFS,Discover Financial Services," $       34,770,505,608.39",6.9
+Finance,AJG,Arthur J. Gallagher & Co.," $       34,555,314,986.98",36.7
+Finance,ARE,"Alexandria Real Estate Equities, Inc."," $       34,550,850,334.00",33.9
+Finance,STT,State Street Corporation," $       34,533,676,136.31",13.7
+Finance,AMP,"Ameriprise Financial, Inc."," $       34,043,598,237.71",16.3
+Finance,EQR,Equity Residential," $       33,938,966,537.00",33.5
+Finance,ALL,Allstate Corporation (The)," $       33,905,173,963.05",5.1
+Finance,NDAQ,"Nasdaq, Inc."," $       33,855,765,259.10",30.6
+Finance,WY,Weyerhaeuser Company," $       30,845,672,625.00",12.5
+Finance,FITB,Fifth Third Bancorp," $       30,543,439,137.71",12
+Finance,EXR,Extra Space Storage Inc," $       30,357,287,225.00",42
+Finance,WLTW,Willis Towers Watson Public Limited Company," $       29,353,458,327.30",13.4
+Finance,MAA,"Mid-America Apartment Communities, Inc."," $       26,417,336,634.00",61.6
+Finance,SYF,Synchrony Financial," $       25,721,182,828.56",6.5
+Finance,DRE,Duke Realty Corporation," $       25,245,492,398.00",27.1
+Finance,NTRS,Northern Trust Corporation," $       25,064,682,283.24",18.8
+Finance,URI,"United Rentals, Inc."," $       23,936,498,157.43",20.1
+Finance,HIG,"Hartford Financial Services Group, Inc. (The)"," $       23,657,960,457.41",11.5
+Finance,ESS,"Essex Property Trust, Inc."," $       22,925,886,932.00",51.3
+Finance,RF,Regions Financial Corporation," $       21,610,917,005.80",8.2
+Finance,RJF,"Raymond James Financial, Inc."," $       21,323,227,071.39",15.1
+Finance,VTR,"Ventas, Inc."," $       20,988,639,739.00",97.3
+Finance,CFG,"Citizens Financial Group, Inc."," $       20,943,446,104.88",9.5
+Finance,MTB,M&T Bank Corporation," $       20,366,815,329.12",11
+Finance,PEAK,"Healthpeak Properties, Inc."," $       19,455,118,149.00",31.4
+Finance,BRO,"Brown & Brown, Inc."," $       19,428,142,630.75",34.2
+Finance,PFG,Principal Financial Group Inc," $       19,405,733,278.10",11.6
+Finance,SBNY,Signature Bank," $       18,862,937,602.54",23.2
+Finance,UDR,"UDR, Inc."," $       18,548,090,906.00",325.1
+Finance,CINF,Cincinnati Financial Corporation," $       18,226,659,290.34",7.3
+Finance,BXP,"Boston Properties, Inc."," $       17,991,915,362.00",56.3
+Finance,BEN,"Franklin Resources, Inc."," $       16,764,975,297.59",9.4
+Finance,KIM,Kimco Realty Corporation," $       15,194,950,940.00",12.9
+Finance,IRM,Iron Mountain Incorporated (Delaware)," $       15,152,125,840.00",23.9
+Finance,MKTX,"MarketAxess Holdings, Inc."," $       15,090,049,814.88",56.3
+Finance,L,Loews Corporation," $       14,739,063,355.33",9.4
+Finance,WRB,W.R. Berkley Corporation," $       14,353,802,202.14",14.8
+Finance,CBOE,"Cboe Global Markets, Inc."," $       13,699,355,908.47",31.2
+Finance,REG,Regency Centers Corporation," $       12,958,168,561.00",38.6
+Finance,LNC,Lincoln National Corporation," $       12,597,203,485.17",9.8
+Finance,HST,Host Hotels," $       12,417,074,116.00",
+Finance,CMA,Comerica Incorporated," $       11,621,081,976.31",10.7
+Finance,IVZ,Invesco Ltd," $       10,741,500,599.07",9.1
+Finance,RE,"Everest Re Group, Ltd."," $       10,739,477,179.23",10.9
+Finance,FRT,Federal Realty Investment Trust," $       10,698,888,028.00",45.1
+Finance,ZION,Zions Bancorporation N.A.," $       10,051,213,317.68",8.9
+Finance,GL,Globe Life Inc.," $         9,586,967,761.30",12.7
+Finance,AIZ,"Assurant, Inc."," $         8,903,750,705.71",21.4
+Finance,VNO,Vornado Realty Trust," $         8,018,732,913.00",
+Finance,PBCT,People’s," $         7,828,576,446.35",11.6
+Health Services,UNH,UnitedHealth Group Incorporated," $     473,073,063,328.87",31.1
+Health Services,ANTM,"Anthem, Inc."," $     112,828,346,320.10",20.8
+Health Services,HCA,"HCA Healthcare, Inc."," $       79,024,684,051.74",13.1
+Health Services,CI,Cigna Corporation," $       77,620,391,335.22",9.7
+Health Services,HUM,Humana Inc.," $       59,826,281,762.08",22.4
+Health Services,IQV,"IQVIA Holdings, Inc."," $       52,264,590,493.24",71.7
+Health Services,CNC,Centene Corporation," $       48,226,518,032.12",66.7
+Health Services,LH,Laboratory Corporation of America Holdings," $       28,535,824,313.66",11.2
+Health Services,DGX,Quest Diagnostics Incorporated," $       20,161,598,494.43",10.4
+Health Services,DVA,DaVita Inc.," $       11,762,317,396.74",13
+Health Services,UHS,"Universal Health Services, Inc."," $       10,611,449,237.93",10.4
+Health Technology,JNJ,Johnson & Johnson," $     451,595,695,648.17",25.6
+Health Technology,PFE,"Pfizer, Inc."," $     317,968,894,402.91",17.5
+Health Technology,LLY,Eli Lilly and Company," $     259,934,839,379.61",42.2
+Health Technology,TMO,Thermo Fisher Scientific Inc," $     254,129,494,161.63",31
+Health Technology,ABT,Abbott Laboratories," $     245,862,632,311.25",34.8
+Health Technology,ABBV,AbbVie Inc.," $     239,406,365,592.27",32.3
+Health Technology,DHR,Danaher Corporation," $     225,634,809,998.03",41.8
+Health Technology,MRK,"Merck & Company, Inc."," $     194,169,320,790.49",27.1
+Health Technology,MDT,Medtronic plc.," $     142,657,571,926.92",29.8
+Health Technology,BMY,Bristol-Myers Squibb Company," $     137,351,630,447.35",
+Health Technology,ISRG,"Intuitive Surgical, Inc."," $     128,509,998,075.81",77.6
+Health Technology,AMGN,Amgen Inc.," $     127,686,740,568.18",23.2
+Health Technology,ZTS,Zoetis Inc.," $     110,725,636,030.92",58.8
+Health Technology,SYK,Stryker Corporation," $     101,258,755,071.66",53.8
+Health Technology,MRNA,"Moderna, Inc."," $       95,300,908,995.23",15.6
+Health Technology,GILD,"Gilead Sciences, Inc."," $       91,043,158,455.34",12.4
+Health Technology,EW,Edwards Lifesciences Corporation," $       80,127,088,108.29",55.3
+Health Technology,BDX,"Becton, Dickinson and Company"," $       72,175,829,346.90",36.7
+Health Technology,REGN,"Regeneron Pharmaceuticals, Inc."," $       67,456,336,484.77",10.1
+Health Technology,BSX,Boston Scientific Corporation," $       61,445,678,253.54",58.5
+Health Technology,ILMN,"Illumina, Inc."," $       59,529,982,544.74",62.6
+Health Technology,VRTX,Vertex Pharmaceuticals Incorporated," $       56,578,685,305.65",26.4
+Health Technology,IDXX,"IDEXX Laboratories, Inc."," $       53,505,617,391.28",75.5
+Health Technology,ALGN,"Align Technology, Inc."," $       51,100,733,466.43",70.7
+Health Technology,DXCM,"DexCom, Inc."," $       50,476,023,894.59",104.3
+Health Technology,A,"Agilent Technologies, Inc."," $       47,257,087,128.61",40.4
+Health Technology,BAX,Baxter International Inc.," $       43,495,238,226.45",36
+Health Technology,MTD,"Mettler-Toledo International, Inc."," $       38,497,752,964.35",53.2
+Health Technology,RMD,ResMed Inc.," $       37,816,614,831.84",76.5
+Health Technology,BIIB,Biogen Inc.," $       35,862,387,277.49",23.5
+Health Technology,WST,"West Pharmaceutical Services, Inc."," $       33,033,629,227.10",58.1
+Health Technology,ZBH,"Zimmer Biomet Holdings, Inc."," $       26,976,292,819.99",32.6
+Health Technology,STE,STERIS plc (Ireland)," $       24,262,580,111.53",86.5
+Health Technology,PKI,"PerkinElmer, Inc."," $       24,255,677,244.13",20
+Health Technology,WAT,Waters Corporation," $       22,253,214,095.16",33.4
+Health Technology,BIO,"Bio-Rad Laboratories, Inc."," $       22,080,500,623.29",3.4
+Health Technology,CTLT,"Catalent, Inc."," $       21,311,200,056.20",40.4
+Health Technology,COO,"The Cooper Companies, Inc."," $       20,830,421,362.02",7.1
+Health Technology,TECH,Bio-Techne Corp," $       19,167,849,570.76",119.5
+Health Technology,HOLX,"Hologic, Inc."," $       18,378,840,319.26",10.6
+Health Technology,VTRS,Viatris Inc.," $       17,185,480,337.93",
+Health Technology,ABMD,"ABIOMED, Inc."," $       16,664,936,668.36",110.5
+Health Technology,INCY,Incyte Corporation," $       16,339,279,870.87",30.5
+Health Technology,TFX,Teleflex Incorporated," $       15,680,409,906.64",35.9
+Health Technology,XRAY,DENTSPLY SIRONA Inc.," $       12,436,553,864.61",29.4
+Health Technology,OGN,Organon & Co.," $         7,900,619,244.35",5.1
+Industrial Services,WM,"Waste Management, Inc."," $       68,076,799,530.55",40.4
+Industrial Services,SLB,Schlumberger N.V.," $       44,491,506,201.21",25.7
+Industrial Services,RSG,"Republic Services, Inc."," $       42,937,804,249.13",36.8
+Industrial Services,KMI,"Kinder Morgan, Inc."," $       37,025,923,392.54",20.7
+Industrial Services,WMB,"Williams Companies, Inc. (The)"," $       32,198,290,438.82",31.4
+Industrial Services,OKE,"ONEOK, Inc."," $       26,751,740,430.85",18.4
+Industrial Services,BKR,Baker Hughes Company," $       25,956,813,924.11",107
+Industrial Services,HAL,Halliburton Company," $       21,473,837,223.66",51.4
+Industrial Services,J,Jacobs Engineering Group Inc.," $       17,998,656,857.26",45.2
+Industrial Services,PWR,"Quanta Services, Inc."," $       15,998,394,995.14",30.1
+Non-Energy Minerals,FCX,"Freeport-McMoRan, Inc."," $       60,895,307,784.26",15.8
+Non-Energy Minerals,NEM,Newmont Corporation," $       48,627,605,120.03",24.5
+Non-Energy Minerals,NUE,Nucor Corporation," $       32,306,706,862.79",6.8
+Non-Energy Minerals,VMC,Vulcan Materials Company (Holding Company)," $       27,589,376,468.73",42.8
+Non-Energy Minerals,MLM,"Martin Marietta Materials, Inc."," $       27,386,272,557.44",37.8
+Process Industries,LIN,Linde plc," $     173,571,536,374.33",50.9
+Process Industries,SHW,Sherwin-Williams Company (The)," $       88,915,975,423.93",48.2
+Process Industries,ECL,Ecolab Inc.," $       65,861,766,535.64",60
+Process Industries,APD,"Air Products and Chemicals, Inc."," $       65,576,451,656.86",33.4
+Process Industries,DOW,Dow Inc.," $       42,061,874,160.53",7.4
+Process Industries,DD,"DuPont de Nemours, Inc."," $       41,790,253,554.44",7.4
+Process Industries,PPG,"PPG Industries, Inc."," $       40,500,587,911.70",29
+Process Industries,ADM,Archer-Daniels-Midland Company," $       37,980,462,581.85",14.6
+Process Industries,CTVA,"Corteva, Inc."," $       34,185,831,057.45",21.5
+Process Industries,LYB,LyondellBasell Industries NV," $       31,002,152,564.33",5.4
+Process Industries,BLL,Ball Corporation," $       30,206,371,624.37",39.7
+Process Industries,ALB,Albemarle Corporation," $       27,684,785,772.45",123.7
+Process Industries,CE,Celanese Corporation Celanese Corporation," $       18,234,778,336.62",6.8
+Process Industries,AMCR,Amcor plc," $       18,214,045,967.18",19.8
+Process Industries,IP,International Paper Company," $       18,120,042,755.63",10.3
+Process Industries,AVY,Avery Dennison Corporation," $       17,454,137,997.62",24.3
+Process Industries,EMN,Eastman Chemical Company," $       16,083,090,836.11",32.6
+Process Industries,MOS,Mosaic Company (The)," $       15,230,184,094.34",8.4
+Process Industries,CF,"CF Industries Holdings, Inc."," $       15,139,820,579.37",51.3
+Process Industries,FMC,FMC Corporation," $       13,961,677,136.61",24.1
+Process Industries,PKG,Packaging Corporation of America," $       12,786,706,765.18",17.4
+Process Industries,WRK,Westrock Company," $       11,642,556,108.74",14.2
+Process Industries,SEE,Sealed Air Corporation," $         9,862,793,229.87",22.6
+Producer Manufacturing,HON,Honeywell International Inc.," $     142,365,867,197.10",26.8
+Producer Manufacturing,AMAT,"Applied Materials, Inc."," $     142,099,923,764.55",24.5
+Producer Manufacturing,CAT,"Caterpillar, Inc."," $     111,974,924,605.84",22.1
+Producer Manufacturing,DE,Deere & Company," $     107,626,370,058.26",18.1
+Producer Manufacturing,GE,General Electric Company," $     105,684,714,422.50",21.5
+Producer Manufacturing,MMM,3M Company," $     102,423,176,841.58",17.4
+Producer Manufacturing,ITW,Illinois Tool Works Inc.," $       76,423,675,433.58",28.7
+Producer Manufacturing,ETN,"Eaton Corporation, PLC"," $       67,227,879,878.34",33.5
+Producer Manufacturing,JCI,Johnson Controls International plc," $       55,888,774,060.43",35.8
+Producer Manufacturing,EMR,Emerson Electric Company," $       54,588,026,957.01",24.3
+Producer Manufacturing,TT,Trane Technologies plc," $       46,284,703,089.83",36.4
+Producer Manufacturing,CARR,Carrier Global Corporation," $       45,513,043,557.06",21.7
+Producer Manufacturing,APTV,Aptiv PLC," $       44,913,460,112.60",56.2
+Producer Manufacturing,PH,Parker-Hannifin Corporation," $       40,610,724,718.52",22.3
+Producer Manufacturing,ROK,"Rockwell Automation, Inc."," $       39,405,064,542.98",30.1
+Producer Manufacturing,OTIS,Otis Worldwide Corporation," $       36,347,481,656.34",31
+Producer Manufacturing,AME,"AMETEK, Inc."," $       33,234,484,908.24",36.8
+Producer Manufacturing,CMI,Cummins Inc.," $       31,399,780,865.12",14.3
+Producer Manufacturing,PCAR,PACCAR Inc.," $       30,718,248,878.42",17.6
+Producer Manufacturing,DOV,Dover Corporation," $       25,676,783,436.79",28
+Producer Manufacturing,IR,Ingersoll Rand Inc.," $       24,304,270,784.20",39.6
+Producer Manufacturing,GNRC,Generac Holdlings Inc.," $       21,949,633,500.81",42.8
+Producer Manufacturing,XYL,Xylem Inc.," $       21,078,220,676.37",47.1
+Producer Manufacturing,IEX,IDEX Corporation," $       17,539,705,926.73",41.8
+Producer Manufacturing,WAB,Westinghouse Air Brake Technologies Corporation," $       17,442,596,063.74",38.2
+Producer Manufacturing,MAS,Masco Corporation," $       16,944,554,120.49",38.4
+Producer Manufacturing,SEDG,"SolarEdge Technologies, Inc."," $       14,834,138,756.82",105.9
+Producer Manufacturing,FBHS,"Fortune Brands Home & Security, Inc."," $       14,207,314,039.49",19.7
+Producer Manufacturing,AOS,A.O. Smith Corporation," $       13,301,176,625.94",29.7
+Producer Manufacturing,PNR,Pentair plc.," $       11,747,299,046.21",24.1
+Producer Manufacturing,ALLE,Allegion plc," $       11,603,056,898.51",26
+Producer Manufacturing,BWA,BorgWarner Inc.," $       10,832,866,628.28",14.1
+Producer Manufacturing,NWL,Newell Brands Inc.," $         9,405,593,931.16",15.5
+Retail Trade,AMZN,"Amazon.com, Inc."," $ 1,728,404,755,739.39",65.2
+Retail Trade,HD,"Home Depot, Inc. (The)"," $     426,717,890,470.80",27.8
+Retail Trade,WMT,Walmart Inc.," $     401,241,519,929.41",50.7
+Retail Trade,COST,Costco Wholesale Corporation," $     251,297,634,711.39",48.8
+Retail Trade,LOW,"Lowe’s Companies, Inc."," $     172,149,152,442.57",22.4
+Retail Trade,CVS,CVS Health Corporation," $     137,497,308,005.61",18
+Retail Trade,TGT,Target Corporation," $     111,132,790,094.27",17
+Retail Trade,TJX,"TJX Companies, Inc. (The)"," $       90,121,962,304.00",34.7
+Retail Trade,DG,Dollar General Corporation," $       54,562,246,382.35",23.1
+Retail Trade,ORLY,"O’Reilly Automotive, Inc."," $       46,891,318,975.79",24.5
+Retail Trade,WBA,"Walgreens Boots Alliance, Inc."," $       45,840,915,477.45",17.8
+Retail Trade,AZO,"AutoZone, Inc."," $       42,199,606,621.88",20.4
+Retail Trade,EBAY,eBay Inc.," $       41,817,048,705.94",3.7
+Retail Trade,ROST,"Ross Stores, Inc."," $       39,982,793,226.70",25.4
+Retail Trade,KR,Kroger Company (The)," $       33,226,197,262.11",34
+Retail Trade,DLTR,"Dollar Tree, Inc."," $       31,757,049,359.91",23.7
+Retail Trade,TSCO,Tractor Supply Company," $       26,828,453,279.28",30.4
+Retail Trade,ETSY,"Etsy, Inc."," $       26,615,080,799.40",64.6
+Retail Trade,BBY,"Best Buy Co., Inc."," $       24,566,078,516.99",9.8
+Retail Trade,ULTA,"Ulta Beauty, Inc."," $       22,364,077,895.40",26.4
+Retail Trade,KMX,CarMax Inc," $       20,559,351,596.02",18
+Retail Trade,BBWI,"Bath & Body Works, Inc."," $       17,942,670,685.17",12.3
+Retail Trade,AAP,Advance Auto Parts Inc.," $       14,764,458,641.51",24.3
+Retail Trade,TPR,"Tapestry, Inc."," $       11,406,394,571.80",13.9
+Retail Trade,RL,Ralph Lauren Corporation," $         8,904,036,573.68",22.2
+Retail Trade,GPS,"Gap, Inc. (The)"," $         6,870,619,822.41",13.5
+Technology Services,MSFT,Microsoft Corporation," $ 2,513,296,516,647.36",37.6
+Technology Services,GOOG,Alphabet Inc.," $ 1,927,101,773,229.48",27.9
+Technology Services,GOOGL,Alphabet Inc.," $ 1,923,705,624,039.54",27.9
+Technology Services,FB,"Meta Platforms, Inc."," $     941,736,878,229.62",24
+Technology Services,ACN,Accenture plc," $     268,079,676,800.94",43.1
+Technology Services,CSCO,"Cisco Systems, Inc."," $     266,384,018,596.41",23.6
+Technology Services,NFLX,"Netflix, Inc."," $     264,606,344,214.60",54.3
+Technology Services,CRM,Salesforce.com Inc," $     251,628,104,835.17",140.1
+Technology Services,ORCL,Oracle Corporation," $     234,732,290,724.48",25.3
+Technology Services,PYPL,"PayPal Holdings, Inc."," $     229,040,890,690.52",45.4
+Technology Services,INTU,Intuit Inc.," $     178,812,338,875.59",84.9
+Technology Services,NOW,"ServiceNow, Inc."," $     125,397,857,170.19",596.1
+Technology Services,IBM,International Business Machines Corporation," $     122,000,723,501.00",25.3
+Technology Services,ADP,"Automatic Data Processing, Inc."," $     102,821,918,705.62",39
+Technology Services,FISV,"Fiserv, Inc."," $       71,054,161,319.96",53.9
+Technology Services,FIS,"Fidelity National Information Services, Inc."," $       69,345,768,715.77",299
+Technology Services,ADSK,"Autodesk, Inc."," $       62,410,859,034.38",47.4
+Technology Services,SNPS,"Synopsys, Inc."," $       55,406,584,297.66",76.5
+Technology Services,INFO,IHS Markit Ltd.," $       51,813,481,614.95",85.8
+Technology Services,CDNS,"Cadence Design Systems, Inc."," $       50,761,145,613.08",75.1
+Technology Services,ROP,"Roper Technologies, Inc."," $       50,102,162,138.95",46.7
+Technology Services,MSCI,MSCI Inc," $       49,103,610,950.88",74.3
+Technology Services,PAYX,"Paychex, Inc."," $       48,525,422,526.83",38.7
+Technology Services,CTSH,Cognizant Technology Solutions Corporation," $       47,046,801,687.66",25
+Technology Services,GPN,Global Payments Inc.," $       41,114,394,610.87",42.6
+Technology Services,MTCH,"Match Group, Inc."," $       37,998,543,462.75",68.2
+Technology Services,EPAM,"EPAM Systems, Inc."," $       36,425,301,272.52",92.7
+Technology Services,VRSK,"Verisk Analytics, Inc."," $       35,723,030,148.22",53.5
+Technology Services,ANSS,"ANSYS, Inc."," $       34,507,669,793.98",75.5
+Technology Services,TWTR,"Twitter, Inc."," $       34,111,357,730.92",
+Technology Services,VRSN,"VeriSign, Inc."," $       28,003,985,762.87",46.8
+Technology Services,CDW,CDW Corporation," $       27,824,579,797.49",28.8
+Technology Services,CERN,Cerner Corporation," $       27,128,852,907.28",54.2
+Technology Services,IT,"Gartner, Inc."," $       26,477,670,965.06",41.5
+Technology Services,PAYC,"Paycom Software, Inc."," $       24,306,856,376.11",140.9
+Technology Services,TYL,"Tyler Technologies, Inc."," $       21,465,450,854.66",140.8
+Technology Services,BR,"Broadridge Financial Solutions, Inc."," $       21,094,802,900.38",39.3
+Technology Services,AKAM,"Akamai Technologies, Inc."," $       19,093,015,481.73",32.2
+Technology Services,FDS,FactSet Research Systems Inc.," $       17,918,395,230.48",46.1
+Technology Services,CDAY,Ceridian HCM Holding Inc.," $       15,880,704,758.48",
+Technology Services,NLOK,NortonLifeLock Inc.," $       15,317,609,009.13",17.3
+Technology Services,PTC,PTC Inc.," $       14,495,886,748.24",30.1
+Technology Services,JKHY,"Jack Henry & Associates, Inc."," $       12,698,037,214.27",38.8
+Technology Services,LDOS,"Leidos Holdings, Inc."," $       12,667,030,441.71",16.4
+Technology Services,CTXS,"Citrix Systems, Inc."," $       12,255,269,468.70",37.6
+Technology Services,JNPR,"Juniper Networks, Inc."," $       11,498,404,173.28",78.8
+Technology Services,DXC,DXC Technology Company," $         8,381,895,474.72",21.7
+Transportation,UPS,"United Parcel Service, Inc."," $     185,561,852,286.17",28.9
+Transportation,UNP,Union Pacific Corporation," $     159,285,300,468.78",27
+Transportation,CSX,CSX Corporation," $       82,242,821,076.62",23.7
+Transportation,FDX,FedEx Corporation," $       68,507,824,108.96",14.2
+Transportation,ODFL,"Old Dominion Freight Line, Inc."," $       39,836,419,299.29",44.3
+Transportation,LUV,Southwest Airlines Company," $       26,044,476,654.81",
+Transportation,DAL,"Delta Air Lines, Inc."," $       25,786,156,965.95",
+Transportation,EXPD,"Expeditors International of Washington, Inc."," $       22,156,325,014.15",19.8
+Transportation,JBHT,"J.B. Hunt Transport Services, Inc."," $       21,196,003,555.63",32.4
+Transportation,UAL,"United Airlines Holdings, Inc."," $       14,729,958,118.29",
+Transportation,CHRW,"C.H. Robinson Worldwide, Inc."," $       14,025,646,282.57",19.1
+Transportation,AAL,"American Airlines Group, Inc."," $       12,140,896,750.77",
+Transportation,ALK,"Alaska Air Group, Inc."," $         6,775,547,671.60",387.9
+Utilities,NEE,"NextEra Energy, Inc."," $     179,849,486,383.75",77.9
+Utilities,DUK,Duke Energy Corporation (Holding Company)," $       79,606,468,544.55",27
+Utilities,SO,Southern Company (The)," $       72,180,165,421.04",24.5
+Utilities,D,"Dominion Energy, Inc."," $       63,463,498,027.29",24.8
+Utilities,EXC,Exelon Corporation," $       55,832,595,797.67",33.8
+Utilities,AEP,"American Electric Power Company, Inc."," $       44,628,575,300.46",18.7
+Utilities,SRE,DBA Sempra," $       42,149,351,402.47",36
+Utilities,XEL,Xcel Energy Inc.," $       36,597,614,341.08",23.2
+Utilities,PEG,Public Service Enterprise Group Incorporated," $       33,454,711,829.61",
+Utilities,AWK,"American Water Works Company, Inc."," $       33,428,361,438.08",45
+Utilities,ES,Eversource Energy (D/B/A)," $       30,643,413,568.73",26.4
+Utilities,WEC,"WEC Energy Group, Inc."," $       30,310,104,833.97",23.3
+Utilities,ED,"Consolidated Edison, Inc."," $       30,114,630,875.97",25.5
+Utilities,EIX,Edison International," $       25,647,606,913.52",34
+Utilities,DTE,DTE Energy Company," $       23,088,417,366.79",26.5
+Utilities,AEE,Ameren Corporation," $       22,818,757,847.84",23.3
+Utilities,PPL,PPL Corporation," $       22,626,576,261.44",81.2
+Utilities,FE,FirstEnergy Corp.," $       22,451,865,075.45",22.2
+Utilities,ETR,Entergy Corporation," $       22,389,316,312.69",18.2
+Utilities,CMS,CMS Energy Corporation," $       18,746,318,837.56",21.6
+Utilities,CNP,"CenterPoint Energy, Inc (Holding Co)"," $       17,369,271,164.43",18.4
+Utilities,AES,The AES Corporation," $       16,254,482,083.82",31.5
+Utilities,EVRG,"Evergy, Inc."," $       15,629,272,434.34",17.9
+Utilities,LNT,Alliant Energy Corporation," $       15,234,453,693.06",24.3
+Utilities,ATO,Atmos Energy Corporation," $       13,935,375,830.35",20.3
+Utilities,NI,NiSource Inc," $       10,807,233,070.89",24.6
+Utilities,NRG,"NRG Energy, Inc."," $       10,518,269,004.32",4.3
+Utilities,PNW,Pinnacle West Capital Corporation," $         7,873,624,839.97",14
