@@ -4,7 +4,7 @@
 Contents
 ========
 
- * [How To Use](#how-to-use)
+ * [Information](#information)
  * [Installation](#installation)
  * [Usage](#usage)
  * [Configuration](#configuration)
