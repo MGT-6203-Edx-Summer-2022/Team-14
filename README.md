@@ -8,7 +8,7 @@ Contents
  * [Installation](#installation)
  * [Usage](#usage)
  * [Configuration](#configuration)
- * [Want to contribute?](#want-to-contribute)
+ * [Contributor](#contributor)
 
 ### How to Use
 This repository is intended to use for Team 14 - MGT6203 Summer 22 Group Project only
@@ -19,5 +19,11 @@ This repository is intended to use for Team 14 - MGT6203 Summer 22 Group Project
 ### Configuration
 ---
 
-### Want to Contribute?
+### Contributor
 ---
+
++ Aaditya Vinnakota
++ Bao Vo
++ Frank Corrao
++ Michael Obin
++ Nicholas Coyle
