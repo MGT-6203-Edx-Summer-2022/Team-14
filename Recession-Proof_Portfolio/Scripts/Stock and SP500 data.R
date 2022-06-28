@@ -11,10 +11,25 @@ library(readr)
 sp <- read_csv("S&P500_by_Sector_Cap_PE.csv")
 sp$market_cap <- parse_number(sp$`Market Capitalization`)
 
+tickers <- sp$Ticker
+
 # Categorize institutions by its market cap
 sp <- sp %>%
   mutate(cap_category = ifelse(sp$market_cap > 10000000000, 'Large Cap', 
                                ifelse(sp$market_cap < 2000000000, 'Small Cap', 'Mid Cap')))
+
+# use Nasdaq100 and SP500 as benchmarks
+benchmarks <- c("^NDX", "^GSPC")
+
+Ra <- tickers %>%
+  tq_get(get  = "stock.prices",
+         from = "2019-01-01",
+         to   = "2021-12-31") %>%
+  group_by(symbol) %>%
+  tq_transmute(select     = adjusted, 
+               mutate_fun = periodReturn, 
+               period     = "monthly", 
+               col_rename = "Ra")
 
 # company by sector
 comp_by_sec <- sp %>% group_by(Sector) %>% summarise(count_company = n())
