@@ -3,6 +3,21 @@ library(tidyquant)
 library("rjson")
 library(dplyr)
 library(ggplot2)
+library(tidyverse)
+library(readr)
+
+# set your wd to local github repo: setwd("/<path>/GitHub/Team-14/Recession-Proof_Portfolio/Data/")
+# get SP500 with sector, market cap, and PE
+sp <- read_csv("S&P500_by_Sector_Cap_PE.csv")
+sp$market_cap <- parse_number(sp$`Market Capitalization`)
+
+# Categorize institutions by its market cap
+sp <- sp %>%
+  mutate(cap_category = ifelse(sp$market_cap > 10000000000, 'Large Cap', 
+                               ifelse(sp$market_cap < 2000000000, 'Small Cap', 'Mid Cap')))
+
+# company by sector
+comp_by_sec <- sp %>% group_by(Sector) %>% summarise(count_company = n())
 
 options("getSymbols.warning4.0"=FALSE)
 options("getSymbols.yahoo.warning"=FALSE)
