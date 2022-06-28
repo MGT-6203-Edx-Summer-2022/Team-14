@@ -49,6 +49,7 @@ head(merge_data)
 keep <- c("symbol", "date", "volume", "adjusted", "Name", "Sector")
 df1 <- merge_data[keep]
 head(df1)
+df2 <- data[c("Symbol", "Name", "Sector")]
 
 daily_sector = df1 %>% group_by(symbol, Name, Sector) %>% 
   tq_transmute(select     = adjusted, 
