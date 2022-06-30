@@ -31,6 +31,12 @@ Ra <- tickers %>%
                period     = "monthly", 
                col_rename = "Ra")
 
+avg_return =Ra %>% 
+  group_by(symbol) %>%
+  summarise(avg_return = round(mean(Ra), 4),Volatility =   sd(Ra)) %>%         
+  arrange(desc(avg_return), desc(Volatility))
+
+
 # company by sector
 comp_by_sec <- sp %>% group_by(Sector) %>% summarise(count_company = n())
 
