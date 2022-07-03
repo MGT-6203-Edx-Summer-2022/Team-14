@@ -51,6 +51,37 @@ RaRb_single_portfolio <- left_join(Ra,
                                    baseline,
                                    by = "date")
 
+RaRb_capm <- RaRb_single_portfolio %>%
+  tq_performance(Ra = Ra, 
+                 Rb = Rb, 
+                 performance_fun = table.CAPM)
+
+RaRb_capm %>% select(symbol, Alpha, Beta)
+
+#create data frame with 0 rows and 3 columns
+df <- data.frame(matrix(ncol = 3, nrow = 0))
+
+#provide column names
+#colnames(df) <- c('symbol', 'coef', 'mkt')
+
+symb <- unique(RaRb_single_portfolio$symbol)
+
+for (value in symb) {
+  curr <- RaRb_single_portfolio[RaRb_single_portfolio$symbol == value,]
+  lms <- lm(Ra ~ Rb, data = curr)
+  df <- rbind(df, c(value, lms$coefficient[1], lms$coefficient[2]))
+}
+
+colnames(df) <- c('symbol','model_intercept','Beta')
+
+
+# create an xts dataset
+All.dat<-xts(RaRb_single_portfolio[,-2],order.by=RaRb_single_portfolio$date)
+
+# calculate the Compounded Return
+Return.cumulative(All.dat$ContraRet, geometric = TRUE)
+
+# write.csv(as.data.frame(df), "/Users/baovo/Documents/GitHub/Team-14/Recession-Proof_Portfolio/Data/BV_RaRbCoef.csv")
 # write.csv(as.data.frame(Ra), "/Users/baovo/Documents/GitHub/Team-14/Recession-Proof_Portfolio/Data/BV_Ra.csv")
 # write.csv(as.data.frame(sp1), "/Users/baovo/Documents/GitHub/Team-14/Recession-Proof_Portfolio/Data/BV_sp.csv")
 # write.csv(as.data.frame(RaRb_single_portfolio), "/Users/baovo/Documents/GitHub/Team-14/Recession-Proof_Portfolio/Data/BV_RaRb.csv")
@@ -67,9 +98,12 @@ Ra <- Ra %>% arrange(symbol, date) %>% group_by(symbol) %>% mutate(cum_ra = cums
 # company by sector
 comp_by_sec <- sp1 %>% group_by(Sector) %>% summarise(count_company = n())
 
-# prices <- map(tickers,function(x) Ad(get(x)))
-# prices <- reduce(prices,merge)
-# colnames(prices) <- tickers
+prices <- tickers %>%
+  tq_get(get  = "stock.prices",
+         from = "2007-12-01",
+         to = "2009-06-30")
+prices <- reduce(prices,merge)
+colnames(prices) <- tickers
 
 head(prices)
 
@@ -101,7 +135,7 @@ head(data)
 head(prices)
 merge_data <- merge(x = prices, y = data, by.x="symbol", by.y="Symbol")
 head(merge_data)
-keep <- c("symbol", "date", "volume", "adjusted", "Name", "Sector")
+keep <- c("Symbol", "date", "volume", "adjusted", "Name", "Sector")
 df1 <- merge_data[keep]
 head(df1)
 df2 <- data[c("Symbol", "Name", "Sector")]
