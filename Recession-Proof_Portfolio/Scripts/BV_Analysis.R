@@ -12,7 +12,8 @@ library(readr)
 sp1 <- read_csv("constituents-financials.csv")
 # sp$`Market Capitalization` <- parse_number(sp$`Market Capitalization`)
 
-
+# company by sector
+comp_by_sec <- sp1 %>% group_by(Sector) %>% summarise(count_company = n())
 
 # Categorize institutions by its market cap
 # sp <- sp %>%
@@ -97,20 +98,10 @@ avg_return =Ra %>%
 
 Ra <- Ra %>% arrange(symbol, date) %>% group_by(symbol) %>% mutate(cum_ra = cumsum(Ra))   
 
-# company by sector
-comp_by_sec <- sp1 %>% group_by(Sector) %>% summarise(count_company = n())
-
-prices <- tickers %>%
-  tq_get(get  = "stock.prices",
-         from = "2007-12-01",
-         to = "2009-06-30")
-prices <- reduce(prices,merge)
-colnames(prices) <- tickers
-
-avg_return %>% head(20) %>% ggplot(aes(reorder(symbol, -avg_return), avg_return, fill = avg_return))+
+p <- avg_return %>% head(20) %>% ggplot(aes(reorder(symbol, -avg_return), avg_return, fill = avg_return))+
   geom_col()+
   coord_flip()+
   labs(title = "Top 20 Tickers Average Return in SP500 during Great Depression (2007-2009)", x = "Ticker", y = "Average Return")+
   theme_classic()+
-  theme(legend.position="none")
-
+  theme(legend.position="right")
+p <- p + guides(fill=guide_legend(title="Avg Return"))
