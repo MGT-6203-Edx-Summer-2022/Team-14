@@ -39,6 +39,7 @@ Ra <- tickers %>%
                period     = "monthly", 
                col_rename = "Ra")
 
+# get return for baseline (^GSPC)
 baseline <- benchmarks %>%
   tq_get(get  = "stock.prices",
          from = "2007-12-01",
@@ -98,6 +99,7 @@ avg_return =Ra %>%
 
 Ra <- Ra %>% arrange(symbol, date) %>% group_by(symbol) %>% mutate(cum_ra = cumsum(Ra))   
 
+# create chart
 p <- avg_return %>% head(20) %>% ggplot(aes(reorder(symbol, -avg_return), avg_return, fill = avg_return))+
   geom_col()+
   coord_flip()+
