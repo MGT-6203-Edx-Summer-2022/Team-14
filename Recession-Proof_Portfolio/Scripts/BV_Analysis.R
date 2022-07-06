@@ -15,7 +15,7 @@ sp1 <- read_csv("constituents-financials.csv")
 # company by sector
 comp_by_sec <- sp1 %>% group_by(Sector) %>% summarise(count_company = n())
 
-# Categorize institutions by its market cap
+# Categorize institutions by its market cap (1 of the factors that can be used later on in analysis)
 # sp <- sp %>%
 #  mutate(cap_category = ifelse(sp$market_cap > 10000000000, 'Large Cap', 
 #                               ifelse(sp$market_cap < 2000000000, 'Small Cap', 'Mid Cap')))
@@ -49,58 +49,12 @@ t <- df %>%
   arrange(count) %>%
   mutate(Sector = factor(Sector, levels = Sector)) %>%
   ggplot(aes(x = Sector, y = count)) +
-  geom_segment(aes(xend = Sector, yend = 0)) +
-  geom_point(size = 4, color = "black", fill = alpha("salmon", 0.4), alpha = 0.7, shape = 21, stroke = 2) +
+  geom_bar(stat = "identity") +
   coord_flip() +
   xlab("") +
   theme_bw()
 
 t
-
-## Barplot of the sectors with the highest prices.
-
-# Order prices from lowest to highest.
-df.price <- df[order(df$avg.price),]
-
-# Make sure sector names are ordered with prices.
-df.price$Sector <- factor(df.price$Sector, levels = df.price$Sector)
-df.price
-
-# Create the graph.
-ggplot(data = df.price, aes(x = Sector, y = avg.price)) +
-  geom_bar(stat="identity", fill = "#ff6666", color = "black") +
-  scale_x_discrete(labels=c("Telecom", "Utilities", "Energy", "Staples", "Real Estate",
-                            "Financials", "Materials", "Industrials", "IT",
-                            "Cons. Disc", "Healthcare")) +
-  theme_minimal() +
-  theme(axis.text.x = element_text(angle=55, vjust=0.5))
-
-## Barplot of highest market cap.
-
-# Same as before.
-df.cap <- df[order(df$cap),]
-df.cap$Sector <- factor(df.cap$Sector, levels = df.cap$Sector)
-
-
-# So few telecom companies are skewing the data in its favor
-ggplot(data = df.cap, aes(x = Sector, y = cap)) +
-  geom_bar(stat="identity", fill = "#ff6666", color = "black") +
-  theme_minimal() +
-  theme(axis.text.x = element_text(angle=55, vjust=0.5))
-
-# Let's fix this by dropping telecom from our factor.
-
-df.cap.new <- subset(df.cap, Sector != "Telecommunication Services")
-df.cap.new
-
-ggplot(data = df.cap.new, aes(x = Sector, y = cap)) +
-  geom_bar(stat="identity", fill = "#ff6666", color = "black") +
-  scale_x_discrete(labels=c("Cons. Disc", "RE", "Materials",
-                            "Utilities", "Industrials","Energy",
-                            "Financials","IT", "Staples", "Healthcare")) +
-  theme_minimal() +
-  theme(axis.text.x = element_text(angle=55, vjust=0.5))
-
 
 # get return for SP500
 Ra <- tickers %>%
