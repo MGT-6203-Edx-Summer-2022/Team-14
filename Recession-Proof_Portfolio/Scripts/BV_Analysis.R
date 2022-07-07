@@ -56,8 +56,29 @@ t <- df %>%
 
 t
 
-# get return for SP500
-Ra <- tickers %>%
+# get return for SP500 during dotcom bubble 2001
+Ra_2001 <- tickers %>%
+  tq_get(get  = "stock.prices",
+         from = "2000-03-24",
+         to = "2001-09-21") %>%
+  group_by(symbol) %>%
+  tq_transmute(select     = adjusted, 
+               mutate_fun = periodReturn, 
+               period     = "monthly", 
+               col_rename = "Ra") 
+
+# get return for baseline (^GSPC) dotcom bubble 2001
+baseline_2001 <- benchmarks %>%
+  tq_get(get  = "stock.prices",
+         from = "2000-03-24",
+         to = "2001-09-21") %>%
+  tq_transmute(select     = adjusted, 
+               mutate_fun = periodReturn, 
+               period     = "monthly", 
+               col_rename = "Rb") 
+
+# get return for SP500 during Great Depression period 2007 - 2009
+Ra_2007 <- tickers %>%
   tq_get(get  = "stock.prices",
          from = "2007-12-01",
          to = "2009-06-30") %>%
@@ -65,29 +86,64 @@ Ra <- tickers %>%
   tq_transmute(select     = adjusted, 
                mutate_fun = periodReturn, 
                period     = "monthly", 
-               col_rename = "Ra")
+               col_rename = "Ra") 
 
-# get return for baseline (^GSPC)
-baseline <- benchmarks %>%
+# get return for baseline (^GSPC) 2007 - 2009
+baseline_2007 <- benchmarks %>%
   tq_get(get  = "stock.prices",
          from = "2007-12-01",
          to = "2009-06-30") %>%
   tq_transmute(select     = adjusted, 
                mutate_fun = periodReturn, 
                period     = "monthly", 
-               col_rename = "Rb")
+               col_rename = "Rb") 
 
-RaRb_single_portfolio <- left_join(Ra, 
-                                   baseline,
+# get return for SP500 of most return bear market
+Ra_2020 <- tickers %>%
+  tq_get(get  = "stock.prices",
+         from = "2020-01-01",
+         to = "2020-09-30") %>%
+  group_by(symbol) %>%
+  tq_transmute(select     = adjusted, 
+               mutate_fun = periodReturn, 
+               period     = "monthly", 
+               col_rename = "Ra")
+
+# get return for baseline (^GSPC) of the most recent bear market
+baseline_2020 <- benchmarks %>%
+  tq_get(get  = "stock.prices",
+         from = "2020-01-01",
+         to = "2020-09-30") %>%
+  tq_transmute(select     = adjusted, 
+               mutate_fun = periodReturn, 
+               period     = "monthly", 
+               col_rename = "Rb") 
+
+# merge Ra & Rb
+RaRb_single_portfolio_2007 <- left_join(Ra_2007, 
+                                   baseline_2007,
                                    by = "date")
 
-# Calculate performance using tidyquant 
-RaRb_capm <- RaRb_single_portfolio %>%
+
+RaRb_capm_2007 <- RaRb_single_portfolio_2007 %>%
   tq_performance(Ra = Ra, 
                  Rb = Rb, 
                  performance_fun = table.CAPM)
 
-RaRb_capm %>% select(symbol, Alpha, Beta)
+RaRb_capm_2007 %>% select(symbol, Alpha, Beta)
+
+# 2020
+RaRb_single_portfolio_2020 <- left_join(Ra_2020, 
+                                        baseline_2020,
+                                        by = "date")
+
+
+RaRb_capm_2020 <- RaRb_single_portfolio_2020 %>%
+  tq_performance(Ra = Ra, 
+                 Rb = Rb, 
+                 performance_fun = table.CAPM)
+
+RaRb_capm_2007 %>% select(symbol, Alpha, Beta)
 
 #create data frame with 0 rows and 3 columns
 df <- data.frame(matrix(ncol = 3, nrow = 0))
