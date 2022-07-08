@@ -119,11 +119,27 @@ baseline_2020 <- benchmarks %>%
                period     = "monthly", 
                col_rename = "Rb") 
 
-# merge Ra & Rb
-RaRb_single_portfolio_2007 <- left_join(Ra_2007, 
-                                   baseline_2007,
+# merge Ra & Rb for 2001
+RaRb_single_portfolio_2001 <- left_join(Ra_2001, 
+                                   baseline_2001,
                                    by = "date")
+# merge Ra & Rb for 2007
+RaRb_single_portfolio_2007 <- left_join(Ra_2007, 
+                                        baseline_2007,
+                                        by = "date")
 
+# merge Ra & Rb for 2020
+RaRb_single_portfolio_2020 <- left_join(Ra_2020, 
+                                        baseline_2020,
+                                        by = "date")
+
+
+RaRb_capm_2001 <- RaRb_single_portfolio_2001 %>%
+  tq_performance(Ra = Ra, 
+                 Rb = Rb, 
+                 performance_fun = table.CAPM)
+
+RaRb_capm_2001 %>% select(symbol, Alpha, Beta)
 
 RaRb_capm_2007 <- RaRb_single_portfolio_2007 %>%
   tq_performance(Ra = Ra, 
@@ -132,18 +148,14 @@ RaRb_capm_2007 <- RaRb_single_portfolio_2007 %>%
 
 RaRb_capm_2007 %>% select(symbol, Alpha, Beta)
 
-# 2020
-RaRb_single_portfolio_2020 <- left_join(Ra_2020, 
-                                        baseline_2020,
-                                        by = "date")
-
-
 RaRb_capm_2020 <- RaRb_single_portfolio_2020 %>%
   tq_performance(Ra = Ra, 
                  Rb = Rb, 
                  performance_fun = table.CAPM)
 
-RaRb_capm_2007 %>% select(symbol, Alpha, Beta)
+RaRb_capm_2020 %>% select(symbol, Alpha, Beta)
+
+model <- lm(Ra ~ Rb, data = RaRb_single_portfolio_2001)
 
 #create data frame with 0 rows and 3 columns
 df <- data.frame(matrix(ncol = 3, nrow = 0))
