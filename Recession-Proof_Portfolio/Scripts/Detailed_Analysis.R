@@ -31,7 +31,7 @@ tickers <- as.character(sp1$Symbol)
 # Create a new data frame grouping the sectors together
 # with their fundamentals  
 
-df <- sp1 %>%
+df_sector <- sp1 %>%
   group_by(Sector) %>%
   summarise(
     count = n(),
@@ -155,24 +155,26 @@ RaRb_capm_2020 <- RaRb_single_portfolio_2020 %>%
 
 RaRb_capm_2020 %>% select(symbol, Alpha, Beta)
 
-model <- lm(Ra ~ Rb, data = RaRb_single_portfolio_2001)
-
 #create data frame with 0 rows and 3 columns
-df <- data.frame(matrix(ncol = 3, nrow = 0))
+curr_md <- data.frame(matrix(ncol = 3, nrow = 0))
 
 #provide column names
 #colnames(df) <- c('symbol', 'coef', 'mkt')
 
-symb <- unique(RaRb_single_portfolio$symbol)
+symb_2007 <- unique(RaRb_single_portfolio_2007$symbol)
 
-for (value in symb) {
-  curr <- RaRb_single_portfolio[RaRb_single_portfolio$symbol == value,]
+for (value in symb_2007) {
+  curr <- RaRb_single_portfolio_2007[RaRb_single_portfolio_2007$symbol == value,]
   lms <- lm(Ra ~ Rb, data = curr)
-  df <- rbind(df, c(value, lms$coefficient[1], lms$coefficient[2]))
+  curr_md_2007 <- rbind(curr_md, c(value, lms$coefficient[1], lms$coefficient[2]))
 }
 
-colnames(df) <- c('symbol','model_intercept','Beta')
+colnames(curr_md_2007) <- c('symbol','model_intercept','Beta')
 
+# get 30 percentile based on alpha
+thirtyp_threshold_2007 <- quantile(as.numeric(curr_md_2007$model_intercept), probs = 0.7)
+
+thirtp_df_2007 <- filter(curr_md, curr_md$model_intercept >= thirtyp_threshold_2007)
 
 # create an xts dataset
 All.dat<-xts(RaRb_single_portfolio[,-2],order.by=RaRb_single_portfolio$date)
@@ -180,6 +182,7 @@ All.dat<-xts(RaRb_single_portfolio[,-2],order.by=RaRb_single_portfolio$date)
 # calculate the Compounded Return
 Return.cumulative(All.dat$ContraRet, geometric = TRUE)
 
+write.csv(as.data.frame(thirtp_df_2007), "/Users/bao.vo/Documents/GitHub/Team-14/Recession-Proof_Portfolio/Data/List_30th_percentile.csv")
 # write.csv(as.data.frame(RaRb_capm), "/Users/baovo/Documents/GitHub/Team-14/Recession-Proof_Portfolio/Data/BV_RaRb_capm.csv")
 # write.csv(as.data.frame(df), "/Users/baovo/Documents/GitHub/Team-14/Recession-Proof_Portfolio/Data/BV_RaRbCoef.csv")
 # write.csv(as.data.frame(Ra), "/Users/baovo/Documents/GitHub/Team-14/Recession-Proof_Portfolio/Data/BV_Ra.csv")
