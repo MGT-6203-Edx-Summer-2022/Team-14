@@ -24,6 +24,7 @@ tidyverse package: install.packages("tidyverse")
 
 ### Configuration
 ---
+$Return_stock$
 
 ### Contributor
 ---
