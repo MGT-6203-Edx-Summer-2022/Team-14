@@ -25,7 +25,7 @@ tidyverse package: install.packages("tidyverse")
 ### Configuration
 ---
 Model used:
-$Return_{stock}$ - $Return_{Risk Free}$ = $&#945;_{stock}$ + $&beta_1$ ($Return_{GSPC}$ - $Retunr_{Risk Free}$)
+$Return_{stock}$ - $Return_{Risk Free} = &#945;_{stock}$ + $&beta_1$ ($Return_{GSPC}$ - $Retunr_{Risk Free}$)
 
 ### Contributor
 ---
