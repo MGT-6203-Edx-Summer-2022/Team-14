@@ -17,9 +17,14 @@ Our goal is to identify a portfolio of stocks which will outperform the market i
 
 ### Installation
 ---
+Stocks and some factors data:
+tidyquant package: install.packages("tidyquant")
+Working with data:
+tidyverse package: install.packages("tidyverse")
 
 ### Configuration
 ---
+
 
 ### Contributor
 ---

@@ -160,6 +160,10 @@ curr_md <- data.frame(matrix(ncol = 3, nrow = 0))
 
 symb_2007 <- unique(RaRb_single_portfolio_2007$symbol)
 
+symb_2001 <- unique(RaRb_single_portfolio_2001$symbol)
+
+symb_2020 <- unique(RaRb_single_portfolio_2020$symbol)
+
 for (value in symb_2007) {
   curr <- RaRb_single_portfolio_2007[RaRb_single_portfolio_2007$symbol == value,]
   lms <- lm(Ra ~ Rb, data = curr)
@@ -179,7 +183,7 @@ All.dat<-xts(RaRb_single_portfolio[,-2],order.by=RaRb_single_portfolio$date)
 # calculate the Compounded Return
 Return.cumulative(All.dat$ContraRet, geometric = TRUE)
 
-write.csv(as.data.frame(thirtp_df_2007), "/Users/bao.vo/Documents/GitHub/Team-14/Recession-Proof_Portfolio/Data/List_30th_percentile.csv")
+# write.csv(as.data.frame(thirtp_df_2007), "/Users/bao.vo/Documents/GitHub/Team-14/Recession-Proof_Portfolio/Data/List_30th_percentile.csv")
 # write.csv(as.data.frame(RaRb_capm), "/Users/baovo/Documents/GitHub/Team-14/Recession-Proof_Portfolio/Data/BV_RaRb_capm.csv")
 # write.csv(as.data.frame(df), "/Users/baovo/Documents/GitHub/Team-14/Recession-Proof_Portfolio/Data/BV_RaRbCoef.csv")
 # write.csv(as.data.frame(Ra), "/Users/baovo/Documents/GitHub/Team-14/Recession-Proof_Portfolio/Data/BV_Ra.csv")
