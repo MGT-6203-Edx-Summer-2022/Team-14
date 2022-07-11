@@ -1,10 +1,7 @@
 # Using tidyquant (including Quantmod package) to get stock price with time series
 library(tidyquant)
 library("rjson")
-library(dplyr)
-library(ggplot2)
 library(tidyverse)
-library(readr)
 
 # set your wd to local github repo: setwd("/<path>/GitHub/Team-14/Recession-Proof_Portfolio/Data/")
 # get SP500 with sector, market cap, and PE
