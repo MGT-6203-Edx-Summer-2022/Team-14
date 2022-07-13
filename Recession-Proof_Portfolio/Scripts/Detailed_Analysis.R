@@ -2,33 +2,39 @@
 library(tidyquant)
 library("rjson")
 library(tidyverse)
+library(dplyr)
 
 # set your wd to local github repo: setwd("/<path>/GitHub/Team-14/Recession-Proof_Portfolio/Data/")
 # get SP500 with sector, market cap, and PE
 # sp <- read_csv("S&P500_by_Sector_Cap_PE.csv")
-sp1 <- read_csv("constituents-financials.csv")
+sp500_w_details <- read_csv("constituents-financials.csv")
 # sp$`Market Capitalization` <- parse_number(sp$`Market Capitalization`)
 
 # company by sector
-comp_by_sec <- sp1 %>% group_by(Sector) %>% summarise(count_company = n())
+comp_by_sec <- sp500_w_details %>% group_by(Sector) %>% summarise(count_company = n())
 
 # Categorize institutions by its market cap (1 of the factors that can be used later on in analysis)
 # sp <- sp %>%
 #  mutate(cap_category = ifelse(sp$market_cap > 10000000000, 'Large Cap', 
 #                               ifelse(sp$market_cap < 2000000000, 'Small Cap', 'Mid Cap')))
-sp1 <- sp1 %>%
-  mutate(cap_category = ifelse(sp1$`Market Cap` > 10000000000, 'Large Cap', 
-                               ifelse(sp1$`Market Cap` < 2000000000, 'Small Cap', 'Mid Cap')))
+sp500_w_details <- sp500_w_details %>%
+  mutate(cap_category = ifelse(sp500_w_details$`Market Cap` > 10000000000, 'Large Cap', 
+                               ifelse(sp500_w_details$`Market Cap` < 2000000000, 'Small Cap', 'Mid Cap')))
 
+sp500_historical <- read_csv("sp500_bear_periods.csv")
+head(sp500_historical)
+
+tickers_1971 <- filter(sp500_historical, Date == "1969-04-01")
+tickers_1971 <- as.character(tickers_1971$Ticker)
 # use SP500 as benchmarks
 benchmarks <- "^GSPC"
 # tickers <- sp$Ticker
-tickers <- as.character(sp1$Symbol)
+tickers <- as.character(sp500_w_details$Symbol)
 
 # Create a new data frame grouping the sectors together
 # with their fundamentals  
 
-df_sector <- sp1 %>%
+df_sector <- sp500_w_details %>%
   group_by(Sector) %>%
   summarise(
     count = n(),
@@ -52,6 +58,40 @@ t <- df %>%
   theme_bw()
 
 t
+
+# get return for SP500 during 1971 period
+Ra_1971 <- tickers_1971 %>%
+  tq_get(get  = "stock.prices",
+         from = "1969-04-01",
+         to = "1971-01-01") %>%
+  group_by(symbol) %>%
+  tq_transmute(select     = adjusted, 
+               mutate_fun = periodReturn, 
+               period     = "monthly", 
+               col_rename = "Ra") 
+
+# get return for baseline (^GSPC) during 1971 period
+baseline_1971 <- benchmarks %>%
+  tq_get(get  = "stock.prices",
+         from = "1969-04-01",
+         to = "1971-01-01") %>%
+  tq_transmute(select     = adjusted, 
+               mutate_fun = periodReturn, 
+               period     = "monthly", 
+               col_rename = "Rb") 
+
+# merge Ra & Rb for 1971
+RaRb_single_portfolio_1971 <- left_join(Ra_1971, 
+                                        
+                                        
+                                        baseline_1971,
+                                        by = "date")
+
+RaRb_capm_1971 <- RaRb_single_portfolio_1971 %>%
+  tq_performance(Ra = Ra, 
+                 Rb = Rb, 
+                 performance_fun = table.CAPM)
+
 
 # get return for SP500 during dotcom bubble 2001
 Ra_2001 <- tickers %>%
@@ -187,7 +227,7 @@ Return.cumulative(All.dat$ContraRet, geometric = TRUE)
 # write.csv(as.data.frame(RaRb_capm), "/Users/baovo/Documents/GitHub/Team-14/Recession-Proof_Portfolio/Data/BV_RaRb_capm.csv")
 # write.csv(as.data.frame(df), "/Users/baovo/Documents/GitHub/Team-14/Recession-Proof_Portfolio/Data/BV_RaRbCoef.csv")
 # write.csv(as.data.frame(Ra), "/Users/baovo/Documents/GitHub/Team-14/Recession-Proof_Portfolio/Data/BV_Ra.csv")
-# write.csv(as.data.frame(sp1), "/Users/baovo/Documents/GitHub/Team-14/Recession-Proof_Portfolio/Data/BV_sp.csv")
+# write.csv(as.data.frame(sp500_w_details), "/Users/baovo/Documents/GitHub/Team-14/Recession-Proof_Portfolio/Data/BV_sp.csv")
 # write.csv(as.data.frame(RaRb_single_portfolio), "/Users/baovo/Documents/GitHub/Team-14/Recession-Proof_Portfolio/Data/BV_RaRb.csv")
 # write.csv(as.data.frame(avg_return), "/Users/baovo/Documents/GitHub/Team-14/Recession-Proof_Portfolio/Data/BV_avg_return.csv")
 # write.csv(as.data.frame(comp_by_sec), "/Users/baovo/Documents/GitHub/Team-14/Recession-Proof_Portfolio/Data/BV_comp_by_sec.csv")
