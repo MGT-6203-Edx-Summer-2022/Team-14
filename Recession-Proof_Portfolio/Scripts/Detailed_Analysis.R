@@ -40,6 +40,7 @@ tickers_1982 <- as.character(tickers_1982$Ticker)
 tickers_1991 <- filter(sp500_historical, Date == "1989-10-01")
 tickers_1991 <- as.character(tickers_1991$Ticker)
 
+tickers_2001 <- filter(sp500_historical, Date == "2001-01-01")
 tickers_2001 <- as.character(tickers_2001$Ticker)
 
 tickers_2007 <- filter(sp500_historical, Date == "2007-10-01")
