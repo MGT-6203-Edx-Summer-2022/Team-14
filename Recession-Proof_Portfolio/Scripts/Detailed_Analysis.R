@@ -133,8 +133,8 @@ Ra_2001 <- tickers_2001 %>%
 # get return for baseline (^GSPC) dotcom bubble 2001
 baseline_2001 <- benchmarks %>%
   tq_get(get  = "stock.prices",
-         from = "2000-03-24",
-         to = "2001-09-21") %>%
+         from = "2001-01-02",
+         to = "2001-10-02") %>%
   tq_transmute(select     = adjusted, 
                mutate_fun = periodReturn, 
                period     = "monthly", 
@@ -162,7 +162,8 @@ baseline_2007 <- benchmarks %>%
                period     = "monthly", 
                col_rename = "Rb") 
 
-# get return for SP500 of most return bear market
+# get return for SP500 of most recent bear market
+# 443/505 tickers
 Ra_2020 <- tickers %>%
   tq_get(get  = "stock.prices",
          from = "2020-01-01",
@@ -185,8 +186,10 @@ baseline_2020 <- benchmarks %>%
 
 # merge Ra & Rb for 2001
 RaRb_single_portfolio_2001 <- left_join(Ra_2001, 
-                                   baseline_2001,
-                                   by = "date")
+                                        baseline_2001,
+                                        by = "date") 
+RaRb_single_portfolio_2001 <- RaRb_single_portfolio_2001[!(RaRb_single_portfolio_2001$symbol=="CFC"),]
+
 # merge Ra & Rb for 2007
 RaRb_single_portfolio_2007 <- left_join(Ra_2007, 
                                         baseline_2007,
@@ -241,10 +244,20 @@ for (value in symb_2007) {
 
 colnames(curr_md_2007) <- c('symbol','model_intercept','Beta')
 
-# get 30 percentile based on alpha
-thirtyp_threshold_2007 <- quantile(as.numeric(curr_md_2007$model_intercept), probs = 0.7)
+keep <- c("symbol", "Alpha", "performance")
 
-thirtp_df_2007 <- filter(curr_md, curr_md$model_intercept >= thirtyp_threshold_2007)
+# get 30 percentile based on alpha
+thirtyp_threshold_2001 <- quantile(as.numeric(RaRb_capm_2001$Alpha), probs = 0.7)
+RaRb_capm_2001$performance <- ifelse(RaRb_capm_2001$Alpha >= thirtyp_threshold_2001, 1, 0)
+RaRb_capm_2001 <- RaRb_capm_2001[keep]
+
+thirtyp_threshold_2007 <- quantile(as.numeric(RaRb_capm_2007$model_intercept), probs = 0.7)
+RaRb_capm_2007$performance <- ifelse(RaRb_capm_2007$Alpha >= thirtyp_threshold_2001, 1, 0)
+RaRb_capm_2007 <- RaRb_capm_2007[keep]
+
+thirtyp_threshold_2020 <- quantile(as.numeric(RaRb_capm_2020$model_intercept), probs = 0.7)
+RaRb_capm_2020$performance <- ifelse(RaRb_capm_2020$Alpha >= thirtyp_threshold_2001, 1, 0)
+RaRb_capm_2020 <- RaRb_capm_2020[keep]
 
 # create an xts dataset
 All.dat<-xts(RaRb_single_portfolio[,-2],order.by=RaRb_single_portfolio$date)
