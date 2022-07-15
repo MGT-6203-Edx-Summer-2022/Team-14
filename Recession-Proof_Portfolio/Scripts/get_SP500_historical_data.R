@@ -74,7 +74,7 @@ sp500_1991 <- filter(spxstocks, Date == '1989-10-01')
 sp500_2001 <- filter(spxstocks, Date == '2001-01-01')
 
 # use for period 2007-10-01 to 2009-07-01
-sp500_2007 <- filter(spxstocks, Date == '2007-10-01 ')
+sp500_2007 <- filter(spxstocks, Date == '2007-10-01')
 
 # use for period 2020-01-01 to 2020-07-01
 sp500_2020 <- filter(spxstocks, Date == '2020-01-01')

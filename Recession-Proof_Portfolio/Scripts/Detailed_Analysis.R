@@ -21,11 +21,33 @@ sp500_w_details <- sp500_w_details %>%
   mutate(cap_category = ifelse(sp500_w_details$`Market Cap` > 10000000000, 'Large Cap', 
                                ifelse(sp500_w_details$`Market Cap` < 2000000000, 'Small Cap', 'Mid Cap')))
 
+# get the 12 bear periods data that we collected from get_SP500_historical_data.R
 sp500_historical <- read_csv("sp500_bear_periods.csv")
 head(sp500_historical)
 
 tickers_1971 <- filter(sp500_historical, Date == "1969-04-01")
 tickers_1971 <- as.character(tickers_1971$Ticker)
+
+tickers_1975 <- filter(sp500_historical, Date == "1973-10-01")
+tickers_1975 <- as.character(tickers_1975$Ticker)
+
+tickers_1980 <- filter(sp500_historical, Date == "1979-04-01")
+tickers_1980 <- as.character(tickers_1980$Ticker)
+
+tickers_1982 <- filter(sp500_historical, Date == "1981-04-01")
+tickers_1982 <- as.character(tickers_1982$Ticker)
+
+tickers_1991 <- filter(sp500_historical, Date == "1989-10-01")
+tickers_1991 <- as.character(tickers_1991$Ticker)
+
+tickers_2001 <- as.character(tickers_2001$Ticker)
+
+tickers_2007 <- filter(sp500_historical, Date == "2007-10-01")
+tickers_2007<- as.character(tickers_2007$Ticker)
+
+tickers_2020 <- filter(sp500_historical, Date == "2007-10-01")
+tickers_2020<- as.character(tickers_2020$Ticker)
+
 # use SP500 as benchmarks
 benchmarks <- "^GSPC"
 # tickers <- sp$Ticker
@@ -59,8 +81,12 @@ t <- df %>%
 
 t
 
-# get return for SP500 during 1971 period
-Ra_1971 <- tickers_1971 %>%
+# get return for SP500 for each period (replace variable with the year end of bear market period)
+# Ra_1971, Ra_1975, Ra_1980, Ra_1982, Ra_1991, Ra_2001, Ra_2007, Ra_2020
+# We identify that there are the lack of data for further period in the past, so we 
+# will work on the 3 period: 2001, 2007, and 2020 bear market and focus on 2007 period
+
+Ra_1971<- tickers_1971 %>%
   tq_get(get  = "stock.prices",
          from = "1969-04-01",
          to = "1971-01-01") %>%
@@ -69,8 +95,9 @@ Ra_1971 <- tickers_1971 %>%
                mutate_fun = periodReturn, 
                period     = "monthly", 
                col_rename = "Ra") 
+# => the number of stock in the list of our SP500 for  period before 2001 is small
 
-# get return for baseline (^GSPC) during 1971 period
+# get return for baseline (^GSPC) during each period
 baseline_1971 <- benchmarks %>%
   tq_get(get  = "stock.prices",
          from = "1969-04-01",
@@ -80,10 +107,8 @@ baseline_1971 <- benchmarks %>%
                period     = "monthly", 
                col_rename = "Rb") 
 
-# merge Ra & Rb for 1971
-RaRb_single_portfolio_1971 <- left_join(Ra_1971, 
-                                        
-                                        
+# merge Ra & Rb 
+RaRb_single_portfolio_1971 <- left_join(Ra_1971,
                                         baseline_1971,
                                         by = "date")
 
@@ -92,12 +117,12 @@ RaRb_capm_1971 <- RaRb_single_portfolio_1971 %>%
                  Rb = Rb, 
                  performance_fun = table.CAPM)
 
-
 # get return for SP500 during dotcom bubble 2001
-Ra_2001 <- tickers %>%
+# we got total 350 out of 514 tickers input for this period
+Ra_2001 <- tickers_2001 %>%
   tq_get(get  = "stock.prices",
-         from = "2000-03-24",
-         to = "2001-09-21") %>%
+         from = "2001-01-02",
+         to = "2001-10-02") %>%
   group_by(symbol) %>%
   tq_transmute(select     = adjusted, 
                mutate_fun = periodReturn, 
@@ -115,6 +140,7 @@ baseline_2001 <- benchmarks %>%
                col_rename = "Rb") 
 
 # get return for SP500 during Great Depression period 2007 - 2009
+# we got 405/505
 Ra_2007 <- tickers %>%
   tq_get(get  = "stock.prices",
          from = "2007-12-01",
@@ -170,7 +196,7 @@ RaRb_single_portfolio_2020 <- left_join(Ra_2020,
                                         baseline_2020,
                                         by = "date")
 
-
+# METHOD 1
 RaRb_capm_2001 <- RaRb_single_portfolio_2001 %>%
   tq_performance(Ra = Ra, 
                  Rb = Rb, 
@@ -192,6 +218,8 @@ RaRb_capm_2020 <- RaRb_single_portfolio_2020 %>%
 
 RaRb_capm_2020 %>% select(symbol, Alpha, Beta)
 
+
+# METHOD 2
 #create data frame with 0 rows and 3 columns
 curr_md <- data.frame(matrix(ncol = 3, nrow = 0))
 
