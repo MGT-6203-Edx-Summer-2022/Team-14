@@ -4,6 +4,20 @@ library("rjson")
 library(tidyverse)
 library(dplyr)
 
+
+# Required library for ships dataset
+install.packages("MASS")
+
+# Required for melt() and cast() function
+install.packages("reshape2")
+install.packages("reshape")
+
+#Loading the libraries
+library(MASS)
+library(reshape2)
+library(reshape)
+
+
 # set your wd to local github repo: setwd("/<path>/GitHub/Team-14/Recession-Proof_Portfolio/Data/")
 # get SP500 with sector, market cap, and PE
 # sp <- read_csv("S&P500_by_Sector_Cap_PE.csv")
@@ -384,12 +398,38 @@ RaRb_capm_comb_final_2020$sector <- as.factor(RaRb_capm_comb_final_2020$sector)
 
 RaRb_capm_comb_final_2001$LMT_std <- as.double(RaRb_capm_comb_final_2001$LMT_std)
 RaRb_capm_comb_final_2001$mean <- as.double(RaRb_capm_comb_final_2001$mean)
+RaRb_capm_comb_final_2001$performance <- as.integer(RaRb_capm_comb_final_2001$performance)
+RaRb_capm_comb_final_2007$LMT_std <- as.double(RaRb_capm_comb_final_2007$LMT_std)
+RaRb_capm_comb_final_2007$mean <- as.double(RaRb_capm_comb_final_2007$mean)
+RaRb_capm_comb_final_2007$performance <- as.integer(RaRb_capm_comb_final_2007$performance)
+RaRb_capm_comb_final_2020$LMT_std <- as.double(RaRb_capm_comb_final_2020$LMT_std)
+RaRb_capm_comb_final_2020$mean <- as.double(RaRb_capm_comb_final_2020$mean)
+RaRb_capm_comb_final_2020$performance <- as.integer(RaRb_capm_comb_final_2020$performance)
+colnames(RaRb_capm_comb_final_2020) <- c("symbol", "Alpha", "performance", "LMT_std", "mean", "period", "interest_mean", "unemp_mean", "sector")
 
-logistic_2001 <- glm(performance ~ Alpha + LMT_std + mean + interest_mean + unemp_mean + sector, data=RaRb_capm_comb_final_2001, family=binomial)
-# rbind(logistic_2001, c(value, curr_logic$coefficient[1], curr_logic$coefficient[2], curr_logic$coefficient[3],
-#                                        curr_logic$coefficient[4], curr_logic$coefficient[5], curr_logic$coefficient[6]))
+combine <- bind_rows(RaRb_capm_comb_final_2001, RaRb_capm_comb_final_2007, RaRb_capm_comb_final_2020)
+combine_converted <- combine %>% 
+  mutate(con_dis = ifelse(sector == "Consumer Discretionary", 1, 0)) %>%
+  mutate(fin = ifelse(sector == "Finance", 1, 0)) %>%
+  mutate(inds = ifelse(sector == "Industrials", 1, 0)) %>%
+  mutate(real_est = ifelse(sector == "Real Estate", 1, 0)) %>%
+  mutate(tech = ifelse(sector == "Technology", 1, 0)) %>%
+  mutate(tele = ifelse(sector == "Telecommunications", 1, 0)) 
+  
+logistic<- glm(performance ~ LMT_std + mean + interest_mean + unemp_mean + sector, data=combine, family=binomial(link='logit'))
 
-summary(logistic_2001)
+logistic_conv <- glm(performance ~ LMT_std + mean + interest_mean + unemp_mean + con_dis + fin + inds
+                     + real_est + tech + tele, data=combine_converted, family=binomial(link='logit'))
+
+logistic_conv_revise <- glm(performance ~ LMT_std + mean + interest_mean + unemp_mean + fin + inds
+                     + real_est, data=combine_converted, family=binomial(link='logit'))
+
+logistic_conv_revise1 <- glm(performance ~ LMT_std + mean + interest_mean + unemp_mean + fin
+                            + real_est, data=combine_converted, family=binomial(link='logit'))
+
+summary(logistic)
+summary(logistic_conv)
+summary(logistic_conv_revise)
 
 colnames(logistic_2001) <- c('symbol', 'alpha', 'LMT_std', 'mean', ' interest_mean', 'unemp', 'sector')
 # create an xts dataset
@@ -401,6 +441,7 @@ Return.cumulative(All.dat$ContraRet, geometric = TRUE)
 #write.csv(as.data.frame(RaRb_capm_comb_final_2001), "/Users/baovo/Documents/GitHub/Team-14/Recession-Proof_Portfolio/Data/FINAL_TABLE_DATA_2001.csv")
 #write.csv(as.data.frame(RaRb_capm_comb_final_2007), "/Users/baovo/Documents/GitHub/Team-14/Recession-Proof_Portfolio/Data/FINAL_TABLE_DATA_2007.csv")
 #write.csv(as.data.frame(RaRb_capm_comb_final_2020), "/Users/baovo/Documents/GitHub/Team-14/Recession-Proof_Portfolio/Data/FINAL_TABLE_DATA_2020.csv")
+#write.csv(as.data.frame(combine), "/Users/baovo/Documents/GitHub/Team-14/Recession-Proof_Portfolio/Data/COMBINED.csv")
 
 
 # write.csv(as.data.frame(thirtp_df_2007), "/Users/bao.vo/Documents/GitHub/Team-14/Recession-Proof_Portfolio/Data/List_30th_percentile.csv")
