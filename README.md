@@ -24,7 +24,7 @@ tidyverse package: install.packages("tidyverse")
 
 ### Configuration
 ---
-
+Use Temp.RData for saved variables data (latest run on code)
 
 ### Contributor
 ---
