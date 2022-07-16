@@ -374,6 +374,24 @@ RaRb_capm_comb_final_2020 <- left_join(RaRb_capm_comb_2020,
                                        tickers_w_symbol,
                                        by = "symbol") 
 
+RaRb_capm_comb_final_2001 <- RaRb_capm_comb_final_2001 %>% drop_na()
+RaRb_capm_comb_final_2007 <- RaRb_capm_comb_final_2007 %>% drop_na()
+RaRb_capm_comb_final_2020 <- RaRb_capm_comb_final_2020 %>% drop_na()
+
+RaRb_capm_comb_final_2001$sector <- as.factor(RaRb_capm_comb_final_2001$sector)
+RaRb_capm_comb_final_2007$sector <- as.factor(RaRb_capm_comb_final_2007$sector)
+RaRb_capm_comb_final_2020$sector <- as.factor(RaRb_capm_comb_final_2020$sector)
+
+RaRb_capm_comb_final_2001$LMT_std <- as.double(RaRb_capm_comb_final_2001$LMT_std)
+RaRb_capm_comb_final_2001$mean <- as.double(RaRb_capm_comb_final_2001$mean)
+
+logistic_2001 <- glm(performance ~ Alpha + LMT_std + mean + interest_mean + unemp_mean + sector, data=RaRb_capm_comb_final_2001, family=binomial)
+# rbind(logistic_2001, c(value, curr_logic$coefficient[1], curr_logic$coefficient[2], curr_logic$coefficient[3],
+#                                        curr_logic$coefficient[4], curr_logic$coefficient[5], curr_logic$coefficient[6]))
+
+summary(logistic_2001)
+
+colnames(logistic_2001) <- c('symbol', 'alpha', 'LMT_std', 'mean', ' interest_mean', 'unemp', 'sector')
 # create an xts dataset
 All.dat<-xts(RaRb_single_portfolio[,-2],order.by=RaRb_single_portfolio$date)
 
