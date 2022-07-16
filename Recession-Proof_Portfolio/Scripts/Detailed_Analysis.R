@@ -24,6 +24,11 @@ sp500_w_details <- sp500_w_details %>%
 # get the 12 bear periods data that we collected from get_SP500_historical_data.R
 sp500_historical <- read_csv("sp500_bear_periods.csv")
 head(sp500_historical)
+sp500_historical_sector <- sp500_historical[c('Ticker', 'Sector')] %>% 
+                        group_by(Ticker, Sector) %>% 
+                        distinct(Ticker, Sector, .keep_all = TRUE) 
+
+colnames(sp500_historical_sector) <- c('symbol', 'sector')
 
 tickers_1971 <- filter(sp500_historical, Date == "1969-04-01")
 tickers_1971 <- as.character(tickers_1971$Ticker)
@@ -188,6 +193,8 @@ baseline_2020 <- benchmarks %>%
 RaRb_single_portfolio_2001 <- left_join(Ra_2001, 
                                         baseline_2001,
                                         by = "date") 
+
+# remove CFC as there are some issues while retrieving the return for this ticker
 RaRb_single_portfolio_2001 <- RaRb_single_portfolio_2001[!(RaRb_single_portfolio_2001$symbol=="CFC"),]
 
 # merge Ra & Rb for 2007
@@ -199,6 +206,7 @@ RaRb_single_portfolio_2007 <- left_join(Ra_2007,
 RaRb_single_portfolio_2020 <- left_join(Ra_2020, 
                                         baseline_2020,
                                         by = "date")
+# RaRb_single_portfolio_2020 <- RaRb_single_portfolio_2020[!(RaRb_single_portfolio_2020$symbol=="ACE"),]
 
 # METHOD 1
 RaRb_capm_2001 <- RaRb_single_portfolio_2001 %>%
@@ -223,18 +231,18 @@ RaRb_capm_2020 <- RaRb_single_portfolio_2020 %>%
 RaRb_capm_2020 %>% select(symbol, Alpha, Beta)
 
 
-# METHOD 2
+# METHOD 2 -------------------------------
 #create data frame with 0 rows and 3 columns
 curr_md <- data.frame(matrix(ncol = 3, nrow = 0))
 
 #provide column names
 #colnames(df) <- c('symbol', 'coef', 'mkt')
 
-symb_2007 <- unique(RaRb_single_portfolio_2007$symbol)
+symb_2007 <- unique(Ra_2007$symbol)
 
-symb_2001 <- unique(RaRb_single_portfolio_2001$symbol)
+symb_2001 <- unique(Ra_2001$symbol)
 
-symb_2020 <- unique(RaRb_single_portfolio_2020$symbol)
+symb_2020 <- unique(Ra_2020$symbol)
 
 for (value in symb_2007) {
   curr <- RaRb_single_portfolio_2007[RaRb_single_portfolio_2007$symbol == value,]
@@ -244,26 +252,138 @@ for (value in symb_2007) {
 
 colnames(curr_md_2007) <- c('symbol','model_intercept','Beta')
 
-keep <- c("symbol", "Alpha", "performance")
+#------------------------------------------
 
 # get 30 percentile based on alpha
+keep <- c("symbol", "Alpha", "performance")
+
 thirtyp_threshold_2001 <- quantile(as.numeric(RaRb_capm_2001$Alpha), probs = 0.7)
 RaRb_capm_2001$performance <- ifelse(RaRb_capm_2001$Alpha >= thirtyp_threshold_2001, 1, 0)
 RaRb_capm_2001 <- RaRb_capm_2001[keep]
 
-thirtyp_threshold_2007 <- quantile(as.numeric(RaRb_capm_2007$model_intercept), probs = 0.7)
-RaRb_capm_2007$performance <- ifelse(RaRb_capm_2007$Alpha >= thirtyp_threshold_2001, 1, 0)
+thirtyp_threshold_2007 <- quantile(as.numeric(RaRb_capm_2007$Alpha), probs = 0.7)
+RaRb_capm_2007$performance <- ifelse(RaRb_capm_2007$Alpha >= thirtyp_threshold_2007, 1, 0)
 RaRb_capm_2007 <- RaRb_capm_2007[keep]
 
-thirtyp_threshold_2020 <- quantile(as.numeric(RaRb_capm_2020$model_intercept), probs = 0.7)
-RaRb_capm_2020$performance <- ifelse(RaRb_capm_2020$Alpha >= thirtyp_threshold_2001, 1, 0)
+thirtyp_threshold_2020 <- quantile(as.numeric(RaRb_capm_2020$Alpha), probs = 0.7)
+RaRb_capm_2020$performance <- ifelse(RaRb_capm_2020$Alpha >= thirtyp_threshold_2020, 1, 0)
 RaRb_capm_2020 <- RaRb_capm_2020[keep]
+
+Ra_LMT_2001 <- tickers_2001 %>%
+  tq_get(get  = "stock.prices",
+         from = "2000-01-02",
+         to = "2001-12-31") %>%
+  group_by(symbol) %>%
+  tq_transmute(select     = adjusted, 
+               mutate_fun = periodReturn, 
+               period     = "monthly", 
+               col_rename = "Ra") 
+
+Ra_LMT_2007 <- tickers %>%
+  tq_get(get  = "stock.prices",
+         from = "2006-12-01",
+         to = "2007-11-01") %>%
+  group_by(symbol) %>%
+  tq_transmute(select     = adjusted, 
+               mutate_fun = periodReturn, 
+               period     = "monthly", 
+               col_rename = "Ra") 
+
+Ra_LMT_2020 <- tickers %>%
+  tq_get(get  = "stock.prices",
+         from = "2019-01-02",
+         to = "2019-12-31") %>%
+  group_by(symbol) %>%
+  tq_transmute(select     = adjusted, 
+               mutate_fun = periodReturn, 
+               period     = "monthly", 
+               col_rename = "Ra")
+
+# Get std and average stock return
+std_2001 <- data.frame(matrix(ncol = 4, nrow = 0))
+
+for (value in symb_2001) {
+  curr <- subset(RaRb_single_portfolio_2001, symbol==value)
+  std <- round(sd(curr$Ra)*100,2) 
+  mean <- round(mean(curr$Ra)*100,2)
+  std_2001[nrow(std_2001) + 1,] <- c(value, std, mean, 2001)
+}
+
+colnames(std_2001) <- c('symbol','LMT_std', 'mean', 'period')
+
+RaRb_capm_comb_2001 <- left_join(RaRb_capm_2001, 
+                            std_2001,
+                            by = "symbol") 
+RaRb_capm_comb_2007 <- left_join(RaRb_capm_2007, 
+                                 std_2007,
+                                 by = "symbol") 
+RaRb_capm_comb_2020 <- left_join(RaRb_capm_2020, 
+                                 std_2020,
+                                 by = "symbol") 
+
+std_2007 <- data.frame(matrix(ncol = 4, nrow = 0))
+
+for (value in symb_2007) {
+  curr <- subset(RaRb_single_portfolio_2007, symbol==value)
+  std <- round(sd(curr$Ra)*100,2) 
+  mean <- round(mean(curr$Ra)*100,2)
+  std_2007[nrow(std_2007) + 1,] <- c(value, std, mean, 2007)
+}
+
+colnames(std_2007) <- c('symbol','LMT_std', 'mean', 'period')
+
+
+std_2020 <- data.frame(matrix(ncol = 4, nrow = 0))
+
+for (value in symb_2020) {
+  curr <- subset(RaRb_single_portfolio_2020, symbol==value)
+  std <- round(sd(curr$Ra)*100,2) 
+  mean <- round(mean(curr$Ra)*100,2)
+  std_2020[nrow(std_2020) + 1,] <- c(value, std, mean, 2020)
+}
+
+colnames(std_2020) <- c('symbol','LMT_std', 'mean', 'period')
+
+# get economic factors data (interest, unemp)
+eco_factors <- read_csv("/Users/baovo/Documents/GitHub/Team-14/data/fred.csv")
+colnames(eco_factors) <- c('date', 'FEDFUNDS', 'GDP', 'UNRATE', 'PAYEMS', 'ICSA', 'CPIAUCSL', 'USREC')
+eco_factors$date <- as.Date(eco_factors$date, format = "%Y-%m-%d")
+
+eco_factors_2001 <- filter(eco_factors, date>="2001-01-02" & date<="2001-10-02")
+RaRb_capm_comb_2001$interest_mean <- round(mean(eco_factors_2001$FEDFUNDS),1)
+RaRb_capm_comb_2001$unemp_mean <- round(mean(eco_factors_2001$UNRATE),1)
+
+eco_factors_2007 <- filter(eco_factors, date>="2007-12-01" & date<="2009-06-30")
+RaRb_capm_comb_2007$interest_mean_2007 <- round(mean(eco_factors_2007$FEDFUNDS),1)
+RaRb_capm_comb_2007$unemp_mean <- round(mean(eco_factors_2007$UNRATE),1)
+
+eco_factors_2020 <- filter(eco_factors, date>="2020-01-01" & date<="2020-09-30")
+RaRb_capm_comb_2020$interest_mean_2020 <- round(mean(eco_factors_2020$FEDFUNDS),1)
+RaRb_capm_comb_2020$unemp_mean <- round(mean(eco_factors_2020$UNRATE),1)
+
+tickers_w_symbol <- read_csv("tickers_w_sectors.csv") 
+colnames(tickers_w_symbol) <- c("symbol", "sector")
+
+RaRb_capm_comb_final_2001 <- left_join(RaRb_capm_comb_2001, 
+                                       tickers_w_symbol,
+                                       by = "symbol") 
+RaRb_capm_comb_final_2007 <- left_join(RaRb_capm_comb_2007, 
+                                       tickers_w_symbol,
+                                       by = "symbol") 
+RaRb_capm_comb_final_2020 <- left_join(RaRb_capm_comb_2020, 
+                                       tickers_w_symbol,
+                                       by = "symbol") 
 
 # create an xts dataset
 All.dat<-xts(RaRb_single_portfolio[,-2],order.by=RaRb_single_portfolio$date)
 
 # calculate the Compounded Return
 Return.cumulative(All.dat$ContraRet, geometric = TRUE)
+
+#write.csv(as.data.frame(RaRb_capm_comb_final_2001), "/Users/baovo/Documents/GitHub/Team-14/Recession-Proof_Portfolio/Data/FINAL_TABLE_DATA_2001.csv")
+#write.csv(as.data.frame(RaRb_capm_comb_final_2007), "/Users/baovo/Documents/GitHub/Team-14/Recession-Proof_Portfolio/Data/FINAL_TABLE_DATA_2007.csv")
+#write.csv(as.data.frame(RaRb_capm_comb_final_2020), "/Users/baovo/Documents/GitHub/Team-14/Recession-Proof_Portfolio/Data/FINAL_TABLE_DATA_2020.csv")
+
 
 # write.csv(as.data.frame(thirtp_df_2007), "/Users/bao.vo/Documents/GitHub/Team-14/Recession-Proof_Portfolio/Data/List_30th_percentile.csv")
 # write.csv(as.data.frame(RaRb_capm), "/Users/baovo/Documents/GitHub/Team-14/Recession-Proof_Portfolio/Data/BV_RaRb_capm.csv")
