@@ -2764,7 +2764,7 @@ FATPU,
 FATPW,
 FAX,Finance
 FBC,Finance
-FBHS,
+FBHS,Industrials
 FBIO,Health Care
 FBIOP,Health Care
 FBIZ,Finance
@@ -4225,7 +4225,7 @@ KARO,Technology
 KAVL,Consumer Discretionary
 KB,Finance
 KBAL,Consumer Discretionary
-KBH,
+KBH,Consumer Discretionary
 KBNT,Technology
 KBNTW,Technology
 KBR,Industrials
@@ -6179,7 +6179,7 @@ PUMP,Energy
 PUYI,Finance
 PV,Finance
 PVBC,Finance
-PVH,
+PVH,Consumer Discretionary
 PVL,Energy
 PW,Real Estate
 PW^A,
@@ -8304,3 +8304,6 @@ ZYME,
 ZYNE,Health Care
 ZYXI,Health Care
 AET,Utilities
+FB,Technology
+ANTM,Basic Materials
+SNI,Communication Services
