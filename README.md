@@ -8,6 +8,7 @@ Contents
  * [Installation](#installation)
  * [Usage](#usage)
  * [Configuration](#configuration)
+ * [Limitation](#limitation)
  * [Contributor](#contributor)
 
 ### Information
@@ -19,6 +20,7 @@ Our goal is to identify a portfolio of stocks which will outperform the market i
 ---
 Stocks and some factors data:
 tidyquant package: install.packages("tidyquant")
+
 Working with data:
 tidyverse package: install.packages("tidyverse")
 
@@ -26,9 +28,13 @@ tidyverse package: install.packages("tidyverse")
 ---
 Use Temp.RData for saved variables data (latest run on code)
 
+### Limitation
+---
+Since we only utilize free access to databases, we don't have the most accurated list of SP500 historical data as well as the institution details information such as their stock price, market cap, sector, etc.
+We do our best to gather as much as free available information for all the SP500 institutions from all sources. However, this has the most impact on the accuracy the outcome.
+
 ### Contributor
 ---
-
 + Aaditya Vinnakota
 + Bao Vo
 + Frank Corrao
