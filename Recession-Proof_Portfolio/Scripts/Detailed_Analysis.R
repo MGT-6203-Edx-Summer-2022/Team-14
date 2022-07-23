@@ -35,7 +35,7 @@ sp500_w_details <- sp500_w_details %>%
   mutate(cap_category = ifelse(sp500_w_details$`Market Cap` > 10000000000, 'Large Cap', 
                                ifelse(sp500_w_details$`Market Cap` < 2000000000, 'Small Cap', 'Mid Cap')))
 
-# get the 12 bear periods data that we collected from get_SP500_historical_data.R
+# get the 8 bear periods data that we collected from get_SP500_historical_data.R
 sp500_historical <- read_csv("sp500_bear_periods.csv")
 head(sp500_historical)
 sp500_historical_sector <- sp500_historical[c('Ticker', 'Sector')] %>% 
@@ -65,7 +65,7 @@ tickers_2001 <- as.character(tickers_2001$Ticker)
 tickers_2007 <- filter(sp500_historical, Date == "2007-10-01")
 tickers_2007<- as.character(tickers_2007$Ticker)
 
-tickers_2020 <- filter(sp500_historical, Date == "2007-10-01")
+tickers_2020 <- filter(sp500_historical, Date == "2020-10-01")
 tickers_2020<- as.character(tickers_2020$Ticker)
 
 # use SP500 as benchmarks
