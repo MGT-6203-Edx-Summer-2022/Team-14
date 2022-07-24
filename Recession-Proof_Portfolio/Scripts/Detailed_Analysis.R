@@ -3,6 +3,7 @@ library(tidyquant)
 library("rjson")
 library(tidyverse)
 library(dplyr)
+library(ggplot2)
 
 
 # Required library for ships dataset
@@ -73,33 +74,7 @@ benchmarks <- "^GSPC"
 # tickers <- sp$Ticker
 tickers <- as.character(sp500_w_details$Symbol)
 
-# Create a new data frame grouping the sectors together
-# with their fundamentals  
 
-df_sector <- sp500_w_details %>%
-  group_by(Sector) %>%
-  summarise(
-    count = n(),
-    avg.price = as.integer(mean(Price)),
-    med.pe = median(`Price/Earnings`, na.rm = TRUE),
-    avg.eps = mean(`Earnings/Share`),
-    cap = median(`Market Cap`),
-    ebitda = median(EBITDA),
-    ps = mean(`Price/Sales`),
-    pb = median(`Price/Book`, na.rm = TRUE)
-  )
-df
-
-t <- df %>%
-  arrange(count) %>%
-  mutate(Sector = factor(Sector, levels = Sector)) %>%
-  ggplot(aes(x = Sector, y = count)) +
-  geom_bar(stat = "identity") +
-  coord_flip() +
-  xlab("") +
-  theme_bw()
-
-t
 
 # get return for SP500 for each period (replace variable with the year end of bear market period)
 # Ra_1971, Ra_1975, Ra_1980, Ra_1982, Ra_1991, Ra_2001, Ra_2007, Ra_2020
@@ -486,3 +461,103 @@ library(lubridate)
 library(xts)
 library(PerformanceAnalytics)
 
+# Create a new data frame grouping the sectors together
+# with their fundamentals  
+
+df <- sp500_w_details %>%
+  group_by(Sector) %>%
+  summarise(
+    count = n(),
+    avg.price = as.integer(mean(Price)),
+    med.pe = median(`Price/Earnings`, na.rm = TRUE),
+    avg.eps = mean(`Earnings/Share`),
+    cap = median(`Market Cap`),
+    ebitda = median(EBITDA),
+    ps = mean(`Price/Sales`),
+    pb = median(`Price/Book`, na.rm = TRUE)
+  )
+df
+
+baseline_2007_daily <- benchmarks %>%
+  tq_get(get  = "stock.prices",
+         from = "2007-12-01",
+         to = "2009-06-30") %>%
+  tq_transmute(select     = adjusted, 
+               mutate_fun = periodReturn, 
+               period     = "daily", 
+               col_rename = "baseline.return") 
+xts <- xts(baseline_2007_daily[, -1], order.by=as.Date(baseline_2007_daily$date)) 
+calendarHeat(xts, ncolors = 99, color = "r2b", date.form = "%Y-%m-%d")
+
+baseline_2001_daily <- benchmarks %>%
+  tq_get(get  = "stock.prices",
+         from = "2001-01-02",
+         to = "2001-10-02") %>%
+  tq_transmute(select     = adjusted, 
+               mutate_fun = periodReturn, 
+               period     = "daily", 
+               col_rename = "baseline.return") 
+xts <- xts(baseline_2001_daily[, -1], order.by=as.Date(baseline_2001_daily$date)) 
+calendarHeat(xts, ncolors = 99, color = "r2b", date.form = "%Y-%m-%d")
+
+baseline_2020_daily <- benchmarks %>%
+  tq_get(get  = "stock.prices",
+         from = "2020-01-01",
+         to = "2020-09-30") %>%
+  tq_transmute(select     = adjusted, 
+               mutate_fun = periodReturn, 
+               period     = "daily", 
+               col_rename = "baseline.return") 
+xts <- xts(baseline_2020_daily[, -1], order.by=as.Date(baseline_2020_daily$date)) 
+calendarHeat(xts, ncolors = 99, color = "r2b", date.form = "%Y-%m-%d")
+
+Ra_2001_daily <- tickers_2001 %>%
+  tq_get(get  = "stock.prices",
+         from = "2001-01-02",
+         to = "2001-10-02") %>%
+  group_by(symbol) %>%
+  tq_transmute(select     = adjusted, 
+               mutate_fun = periodReturn, 
+               period     = "daily", 
+               col_rename = "Ra") 
+
+ourperf_2001 <- RaRb_capm_2001 %>% filter(performance == 1)
+Ra_2001_outperf <- Ra_2001_daily %>% filter(symbol %in% ourperf_2001$symbol)
+Ra_2001_outperf <- Ra_2001_outperf[,-1]
+Ra_2001_outperf <- Ra_2001_outperf %>% group_by(date) %>% summarise(daily.returns = mean(Ra))
+xts <- xts(Ra_2001_outperf[, -1], order.by=as.Date(Ra_2001_outperf$date)) 
+t <- calendarHeat(xts, ncolors = 99, color = "r2b", date.form = "%Y-%m-%d")
+
+Ra_2007_daily <- tickers %>%
+  tq_get(get  = "stock.prices",
+         from = "2007-12-01",
+         to = "2009-06-30") %>%
+  group_by(symbol) %>%
+  tq_transmute(select     = adjusted, 
+               mutate_fun = periodReturn, 
+               period     = "daily", 
+               col_rename = "Ra") 
+
+ourperf_2007 <- RaRb_capm_2007 %>% filter(performance == 1)
+Ra_outperf <- Ra_2007_daily %>% filter(symbol %in% ourperf_2007$symbol)
+Ra_outperf <- Ra_outperf[,-1]
+Ra_outperf <- Ra_outperf %>% group_by(date) %>% summarise(daily.returns = mean(Ra))
+xts <- xts(Ra_outperf[, -1], order.by=as.Date(Ra_outperf$date)) 
+calendarHeat(xts, ncolors = 99, color = "r2b", date.form = "%Y-%m-%d")
+
+Ra_2020_daily <- tickers %>%
+  tq_get(get  = "stock.prices",
+         from = "2020-01-01",
+         to = "2020-09-30") %>%
+  group_by(symbol) %>%
+  tq_transmute(select     = adjusted, 
+               mutate_fun = periodReturn, 
+               period     = "daily", 
+               col_rename = "Ra") 
+
+ourperf_2020 <- RaRb_capm_2020 %>% filter(performance == 1)
+Ra_outperf <- Ra_2020_daily %>% filter(symbol %in% ourperf_2020$symbol)
+Ra_outperf <- Ra_outperf[,-1]
+Ra_outperf <- Ra_outperf %>% group_by(date) %>% summarise(daily.returns = mean(Ra))
+xts <- xts(Ra_outperf[, -1], order.by=as.Date(Ra_outperf$date)) 
+calendarHeat(xts, ncolors = 99, color = "r2b", date.form = "%Y-%m-%d")
