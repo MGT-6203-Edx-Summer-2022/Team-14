@@ -65,41 +65,13 @@ tickers_2001 <- as.character(tickers_2001$Ticker)
 tickers_2007 <- filter(sp500_historical, Date == "2007-10-01")
 tickers_2007<- as.character(tickers_2007$Ticker)
 
-tickers_2020 <- filter(sp500_historical, Date == "2007-10-01")
+tickers_2020 <- filter(sp500_historical, Date == "2020-10-01")
 tickers_2020<- as.character(tickers_2020$Ticker)
 
 # use SP500 as benchmarks
 benchmarks <- "^GSPC"
 # tickers <- sp$Ticker
 tickers <- as.character(sp500_w_details$Symbol)
-
-# Create a new data frame grouping the sectors together
-# with their fundamentals  
-
-df_sector <- sp500_w_details %>%
-  group_by(Sector) %>%
-  summarise(
-    count = n(),
-    avg.price = as.integer(mean(Price)),
-    med.pe = median(`Price/Earnings`, na.rm = TRUE),
-    avg.eps = mean(`Earnings/Share`),
-    cap = median(`Market Cap`),
-    ebitda = median(EBITDA),
-    ps = mean(`Price/Sales`),
-    pb = median(`Price/Book`, na.rm = TRUE)
-  )
-df
-
-t <- df %>%
-  arrange(count) %>%
-  mutate(Sector = factor(Sector, levels = Sector)) %>%
-  ggplot(aes(x = Sector, y = count)) +
-  geom_bar(stat = "identity") +
-  coord_flip() +
-  xlab("") +
-  theme_bw()
-
-t
 
 # get return for SP500 for each period (replace variable with the year end of bear market period)
 # Ra_1971, Ra_1975, Ra_1980, Ra_1982, Ra_1991, Ra_2001, Ra_2007, Ra_2020
@@ -453,36 +425,4 @@ Return.cumulative(All.dat$ContraRet, geometric = TRUE)
 # write.csv(as.data.frame(avg_return), "/Users/baovo/Documents/GitHub/Team-14/Recession-Proof_Portfolio/Data/BV_avg_return.csv")
 # write.csv(as.data.frame(comp_by_sec), "/Users/baovo/Documents/GitHub/Team-14/Recession-Proof_Portfolio/Data/BV_comp_by_sec.csv")
 
-
-
-##################################
-########## Side Analysis #########
-##################################
-
-avg_return = Ra_port_2007 %>% 
-  group_by(symbol) %>%
-  summarise(avg_return = round(mean(Ra), 4),Volatility =   sd(Ra)) %>%         
-  arrange(desc(avg_return), desc(Volatility))
-
-Ra_port_2007 <- Ra_port_2007 %>% arrange(symbol, date) %>% group_by(symbol) %>% mutate(cum_ra = cumsum(Ra))   
-
-# create chart
-p <- avg_return %>% head(100) %>% ggplot(aes(reorder(symbol, -avg_return), avg_return, fill = avg_return))+
-  geom_col()+
-  coord_flip()+
-  labs(title = "List of outperformed stocks by average return (2007-2009)", x = "Ticker", y = "Average Return")+
-  theme_classic()+
-  theme(legend.position="right")
-p <- p + guides(fill=guide_legend(title="Avg Return"))
-
-combine_outper <- combine %>% filter(performance == 1 & sector %in% c("Finance", "Real Estate"))
-latest_2001 <- combine_outper %>% filter(period == 2001)
-latest_2007 <- combine_outper %>% filter(period == 2007)
-latest_2020 <- combine_outper %>% filter(period == 2020)
-portfolio <- merge(latest_2001, latest_2007, by="symbol") %>% merge(latest_2020, by="symbol")
-Ra_port_2007 <- Ra_2007 %>% filter(symbol %in% combine$symbol)
-
-library(lubridate)
-library(xts)
-library(PerformanceAnalytics)
 
